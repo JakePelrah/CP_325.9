@@ -24,9 +24,16 @@
     border-radius: 1em;
 }
 
-#homepage-map{
-    width: 100%;
-    height: 100%;
+#homepage-map gmp-map-3d {
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+#homepage-title{
+    font-size: 2em;
+    font-weight: bold;
 }
 
 #home-overlay{
@@ -34,7 +41,9 @@
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    background-color: rgba(53, 53, 53, 0.504);
     margin: auto;
     color: white;
+    overflow: hidden;
 }
+

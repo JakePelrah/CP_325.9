@@ -1,9 +1,3 @@
-#login {
-    color: var(--sidebar-color-text);
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 2em;
-}
 
 
 .sidebar-btn .text {
@@ -36,3 +30,13 @@
     height: 4em;
     width: 4em;
 }
+
+#sidebar {
+    width: 16em;
+    min-width: 16em;
+    background-color: var(--sidebar-color);
+    height: 100vh;
+  }
+  
+  
+  

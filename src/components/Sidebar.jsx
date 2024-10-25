@@ -5,7 +5,7 @@ import * as Icons from "react-icons/gi";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import { BsPersonCircle } from "react-icons/bs";
-import { useLM } from "./LMProvider";
+import { useLM } from "../providers/LMProvider";
 import { v4 as uuidv4 } from 'uuid'
 import './sidebar.css'
 
