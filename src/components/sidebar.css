@@ -1,0 +1,38 @@
+#login {
+    color: var(--sidebar-color-text);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 2em;
+}
+
+
+.sidebar-btn .text {
+    font-size: 1.2em;
+    font-family: 'Roboto';
+}
+
+.category {
+    background-color: gray;
+    border-bottom: 1px solid black;
+}
+
+[id^=collapse] {
+    background-color: red;
+    height: 10em;
+}
+
+.sidebar-btn {
+    color: var(--sidebar-color-text);
+}
+
+.category-link {
+  color: var(--sidebar-color-text) !important;
+  font-size: 1.2em;
+}
+
+
+#profile-image{
+    clip-path: circle();
+    height: 4em;
+    width: 4em;
+}

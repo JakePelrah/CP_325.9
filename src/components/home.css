@@ -1,0 +1,40 @@
+#home {
+    background-image: url('../../images/Screenshot\ 2024-10-23\ at\ 1.30.39\ PM.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.5;
+}
+
+#signin-btn,
+#signin-btn:hover {
+    background-color: var(--body-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 1em;
+}
+
+#explore-btn {
+    background-color: var(--body-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 1em;
+}
+
+#homepage-map{
+    width: 100%;
+    height: 100%;
+}
+
+#home-overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: white;
+}
