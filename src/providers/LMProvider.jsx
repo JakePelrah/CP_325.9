@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useRef } from "react";
 
 const LMContext = createContext();
 export const useLM = () => useContext(LMContext)
@@ -6,6 +6,10 @@ export const useLM = () => useContext(LMContext)
 export default function LMProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState({})
     const [landmarks, setLandmarks] = useState({})
+    // const [marker, setMarker] = useState(null)
+    const mapRef = useRef(null)
+    const markerRef = useRef(null)
+
     const [location, setLocation] = useState({
         "_id": "671c0c22e1d881679cf2ad2b",
         "title": "Red Rocks Amphitheatre",
@@ -28,7 +32,7 @@ export default function LMProvider({ children }) {
             "youtube": "https://www.youtube.com/channel/UCK36AQt-u4CLisfkFtkIxYw"
         },
         "image_url": "red_rocks.png",
-        "address":"18300 W Alameda Pkwy, Morrison, CO 80465"
+        "address": "18300 W Alameda Pkwy, Morrison, CO 80465"
     })
 
 
@@ -37,10 +41,53 @@ export default function LMProvider({ children }) {
             .then(res => res.json())
             .then(setIsLoggedIn)
 
+        init()
         getLandmarks()
-
     }, [])
 
+    useEffect(() => {
+        if (location._id && markerRef.current) {
+            markerRef.current.position = { lat: location.coords.marker.latitude, lng: location.coords.marker.longitude, altitude: 100 }
+            markerRef.current.label = location.title
+
+            mapRef?.current?.flyCameraTo({
+                endCamera: {
+                    center: { lat: location.coords.view.latitude, lng: location.coords.view.longitude, altitude: 2000 },
+                    tilt: 67.5,
+                    range: 1000
+                },
+                durationMillis: 5000
+            });
+        }
+    }, [location])
+
+
+
+    async function init() {
+
+        const { Map3DElement, Marker3DElement } = await google.maps.importLibrary("maps3d");
+
+        const map = new Map3DElement({
+            center: { lat: location.coords.view.latitude, lng: location.coords.view.longitude, altitude: 2000 },
+            tilt: 60,
+            range: 100,
+            defaultLabelsDisabled: true,
+            heading: 77.86
+        });
+
+        const marker = new Marker3DElement({
+            position: { lat: location.coords.marker.latitude, lng: location.coords.marker.longitude },
+            label: location.title
+        });
+
+        // references
+        markerRef.current = marker
+        mapRef.current = map
+
+        // add to map
+        map.append(marker)
+        document.getElementById('map').append(map)
+    }
 
     function getLandmarks() {
         fetch('/getLandmarks')
@@ -62,7 +109,7 @@ export default function LMProvider({ children }) {
 
     return (
         <LMContext.Provider value={{
-            isLoggedIn, landmarks, setLocation, location, logout
+            isLoggedIn, landmarks, logout, location, setLocation
         }}>
             {children}
         </LMContext.Provider>

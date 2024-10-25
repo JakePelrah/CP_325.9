@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BsWikipedia, BsYoutube, BsLink45Deg } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
 import { useLM } from '../providers/LMProvider';
@@ -6,37 +6,8 @@ import MapNav from './MapNav'
 import './mapPage.css'
 
 export default function MapPage() {
-  const mapRef = useRef(null)
-  const mapElem = useRef(null)
-  const { isLoggedIn, logout, location } = useLM()
+  const { location } = useLM()
 
-  useEffect(() => {
-    if (location._id) {
-      init()
-    }
-    console.log(location)
-  }, [location])
-
-  async function init() {
-
-    const { Map3DElement, Marker3DElement } = await google.maps.importLibrary("maps3d");
-
-    const map = new Map3DElement({
-      center: { lat: location.coords.view.latitude, lng: location.coords.view.longitude, altitude: 2000 },
-      tilt: 60,
-      range: 100,
-      defaultLabelsDisabled: true,
-      heading: 77.86
-    });
-
-    const marker = new Marker3DElement({
-      position: { lat: location.coords.marker.latitude, lng: location.coords.marker.longitude },
-      label: location.title
-    });
-    map.append(marker)
-    mapRef.current.append(map);
-    mapElem.current = map
-  }
 
   return (
     <div className='d-flex flex-column'>
@@ -53,7 +24,7 @@ export default function MapPage() {
         </div>
       </div>
 
-      <div id="map" ref={mapRef}></div>
+      <div id="map"></div>
 
       <div className='d-flex flex-column'>
         <MapNav />
