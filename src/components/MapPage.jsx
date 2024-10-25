@@ -61,11 +61,11 @@ export default function MapPage() {
 
           <div id="description" className="d-flex flex-column mx-3 mt-3">
             <div className="mb-3">
-              <span className="title">Red Rocks Amphitheatre  </span>
-              <span className="address">- 18300 W Alameda Pkwy, Morrison, CO 80465</span>
+              <span className="title">{location.title}  </span>
+              <span className="address">- {location.address}</span>
             </div>
             <p>
-              Red Rocks Amphitheatre, located just outside Denver, Colorado, is a breathtaking outdoor concert venue renowned for its stunning natural acoustics and dramatic red sandstone formations. Nestled in a picturesque setting, the amphitheater offers a unique blend of natural beauty and artistic performance, attracting world-class musicians and enthusiastic audiences alike. With a seating capacity of approximately 9,500, it provides an intimate experience while showcasing the beauty of the surrounding foothills. Known for its vibrant history, Red Rocks has hosted legendary acts from The Beatles to U2, making it a cherished landmark in the music world and a must-visit destination for music lovers and outdoor enthusiasts.
+              {location.description}
             </p>
           </div>
 
