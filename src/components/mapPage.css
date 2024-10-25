@@ -1,29 +1,12 @@
-.brand {
-    color: var(--sidebar-color-text);
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-hr {
-    height: .1em;
-    border: 1px solid white;
-    margin: 1em;
-}
-
 #map gmp-map-3d {
     width: 100vw;
-    height: 50vh !important;
+    height: 50vh;
 }
-
 
 #info {
     background-color: var(--sidebar-color);
-    height: 100%;
     border-radius: .2em;
-}
-
-#info .address {
-    font-weight: normal;
+    height: 33vh;
 }
 
 #info img {
@@ -36,15 +19,13 @@ hr {
 
 #info .text {
     color: var(--sidebar-color-text);
-    font-weight: bold;
 }
 
 #description {
     color: var(--sidebar-color-text);
-    font-weight: bold;
-    margin-left: 1em;
+    overflow-y: scroll;
+    scrollbar-color: var(--sidebar-color-text) var(--sidebar-color);
 }
-
 
 #description .title {
     color: var(--sidebar-color-text);
@@ -57,7 +38,24 @@ hr {
     color: var(--sidebar-color-text);
 }
 
-
 #bio a {
     color: var(--sidebar-color-text);
+}
+
+#nav-overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(53, 53, 53, 0.504);
+    margin: auto;
+    color: white;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#profile-image{
+    clip-path: circle();
+    height: 4em;
+    width: 4em;
 }

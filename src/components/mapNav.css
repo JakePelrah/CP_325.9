@@ -1,0 +1,9 @@
+.dropdown-toggle{
+  color:var(--sidebar-color-text);
+  font-size: 1.2em;
+  font-family: 'Roboto';
+}
+
+#map-nav{
+  background-color: var(--sidebar-color);
+}
