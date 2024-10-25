@@ -1,9 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import { Popover } from "bootstrap";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
 import * as Icons from "react-icons/gi";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { useLM } from "../providers/LMProvider";
 import { v4 as uuidv4 } from 'uuid'
 import './mapNav.css'
 
