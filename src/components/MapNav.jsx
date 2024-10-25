@@ -38,14 +38,15 @@ export default function MapNav() {
 
 function Category({ name, data, Icon }) {
   const renderedItems = data.map(entry =>
-    <li key={uuidv4()}><a class="dropdown-item">{entry}</a></li>)
+    <li key={uuidv4()}><a className="dropdown-item">{entry}</a></li>)
+
   return (
-    <div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <div className="dropdown">
+      <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <Icon size={32} className="me-4" />
         <span>{name}</span>
       </button>
-      <ul class="dropdown-menu">
+      <ul className="dropdown-menu">
         {renderedItems}
       </ul>
     </div>
