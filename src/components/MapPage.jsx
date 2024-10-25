@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { BsWikipedia, BsYoutube } from "react-icons/bs";
 import Sidebar from './Sidebar'
-
+import './mapPage.css'
 
 export default function MapPage() {
   const mapRef = useRef(null)

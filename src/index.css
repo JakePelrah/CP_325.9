@@ -18,74 +18,9 @@ body {
   width: 100vw;
 }
 
-#map gmp-map-3d {
-  width: 100vw;
-  height: 50vh !important;
-}
-
-
 .vAygCK-api-load-alpha-banner {
   visibility: hidden;
 }
 
-
-.brand {
-  color: var(--sidebar-color-text);
-  font-size: 1.5em;
-  font-weight: bold;
-} */
-
-
-hr {
-  height: .1em;
-  border: 1px solid white;
-  margin: 1em;
-}
-
-#info {
-  background-color: var(--sidebar-color);
-  height: 100%;
-  border-radius: .2em;
-}
-
-#info .address{
-  font-weight: normal;
-} 
-
-/* #info img {
-  height: 10em;
-  width: 10em;
-  object-fit: cover;
-  margin: 1em;
-  border-radius: .25em;
-}
-
-#info .text {
-  color: var(--sidebar-color-text);
-  font-weight: bold;
-}
-
-#description {
-  color:var(--sidebar-color-text);
-  font-weight: bold;
-  margin-left: 1em;
-} */
-
-/* 
-#description .title{
-  color:var(--sidebar-color-text);
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
-#bio  {
-  border-left: 1px rgba(255, 255, 255, 0.191) solid;
-  color: var(--sidebar-color-text);
-}
-
-
-#bio a{
-  color: var(--sidebar-color-text);
-} */
 
 

@@ -1,3 +1,5 @@
+import "./createPage.css"
+
 export default function Create(){
 
 
