@@ -65,7 +65,7 @@ function Info() {
 
   return (<div id="info" className="d-flex m-3 flex-grow">
 
-    <div id="description" className="d-flex flex-column">
+    <div id="description" className="d-flex flex-column m-3">
 
       <div className="mb-3">
         <span className="title">Home  </span>
