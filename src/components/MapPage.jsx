@@ -34,9 +34,7 @@ export default function MapPage() {
 
   return (
     <div className='d-flex'>
-
       <Sidebar />
-
       <div className='d-flex flex-column m-3'>
         <div id="map" ref={mapRef}></div>
         <Info />

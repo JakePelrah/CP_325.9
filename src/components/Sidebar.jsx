@@ -18,28 +18,23 @@ export default function Sidebar() {
     { name: "Genre", data: ["Jon Anderson"], icon: Icons.GiMusicalNotes },
     { name: "Label", data: ["Jon Anderson"], icon: Icons.GiCompactDisc },
     { name: "Songs", data: ["Jon Anderson"], icon: Icons.GiMusicalScore },
-    { name: "Venue", data: ["Jon Anderson"], icon: Icons.GiTheaterCurtains }
+    { name: "Venue", data: ["Jon Anderson"], icon: Icons.GiTheaterCurtains },
+    { name: "Favorites", data: ["Jon Anderson"], icon: MdFavorite }
   ])
 
 
   useEffect(() => {
 
-    const button = document.createElement('button')
-    button.innerText = 'Logout'
-    button.classList.add('btn')
+    // const button = document.createElement('button')
+    // button.innerText = 'Logout'
+    // button.classList.add('btn')
 
-    button.onclick = logout
-    modalRef.current = new Popover(modalRef.current, {
-      html: true,
-      content: button
-    })
+    // button.onclick = logout
+    // modalRef.current = new Popover(modalRef.current, {
+    //   html: true,
+    //   content: button
+    // })
   }, [])
-
-
-  function openProfileModal() {
-
-  }
-
 
 
   function Category({ name, data, Icon }) {
@@ -76,38 +71,27 @@ export default function Sidebar() {
 
     <hr />
 
-    <li className="mb-2">
-
-      <button className="sidebar-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-        data-bs-toggle="collapse" data-bs-target={`#${name}-collapse`} aria-expanded="false">
-        <MdFavorite size={32} className="me-4" />
-        <span className="text">Favorites</span>
-      </button>
-
-      <div className="collapse ms-4" id={`${name}-collapse`}>
-        <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          {/* {renderedData} */}
-        </ul>
-      </div>
-    </li>
 
 
-    <li className="mb-2">
+    <div className="ms-4">
       <Link to="/create" className="sidebar-btn btn  d-inline-flex align-items-center rounded border-0 mb-2"
         aria-expanded="false">
         <FaMapMarkerAlt size={32} className="me-4" />
-        <span className="text">Create Landmark</span>
+        <span className="text">Create</span>
       </Link>
-    </li>
+    </div>
 
 
-    <a id="signin-btn" href="http://localhost:3000/login/federated/google" className='btn d-flex align-items-center gap-3'>
-      <BsPersonCircle size={32} /> Sign in</a>
+    <div className="d-flex ms-4 mt-5 pt-5">
+      <a id="signin-btn" href="http://localhost:3000/login/federated/google" className='btn d-flex align-items-center gap-3'>
+        <BsPersonCircle size={32} /> Sign in</a>
+    </div>
 
-    <div ref={modalRef} onClick={openProfileModal} className="d-flex justify-content-center" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Top popover" >
+
+    {/* <div ref={modalRef} onClick={openProfileModal} className="d-flex justify-content-center" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Top popover" >
       {isLoggedIn ? <img id="profile-image" src={isLoggedIn?._json?.picture}></img> :
         <BsPersonCircle size={32} className="me-4" />}
-    </div>
+    </div> */}
 
   </div>)
 }
