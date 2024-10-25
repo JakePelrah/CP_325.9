@@ -9,6 +9,8 @@ import MongoStore from 'connect-mongo';
 
 // Import routes
 import { authRouter } from './src/routes/auth.js';
+import { landmarkRouter } from './src/routes/landmarks.js';
+
 
 
 // Get the directory name of the current module
@@ -40,8 +42,9 @@ app.use(function(req, res, next) {
   req.session.messages = []; // Clear messages after use
   next(); // Proceed to the next middleware
 });
-
 app.use('/', authRouter)
+app.use('/', landmarkRouter)
+
 
 // Handle client-side routing, returning all requests to the app
 app.get('*', (_req, res) => {

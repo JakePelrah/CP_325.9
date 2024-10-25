@@ -37,7 +37,7 @@ export default function Home() {
         mapRef.current.append(map);
         map.flyCameraAround({
             camera,
-            durationMillis: 6000,
+            durationMillis: 10000,
             rounds: 1
         });
     }

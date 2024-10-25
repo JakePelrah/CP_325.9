@@ -1,0 +1,40 @@
+{
+  "title": "Red Rocks Amphitheatre",
+  "description": "Red Rocks Amphitheatre, located just outside Denver, Colorado, is a breathtaking outdoor concert venue renowned for its stunning natural acoustics and dramatic red sandstone formations. Nestled in a picturesque setting, the amphitheater offers a unique blend of natural beauty and artistic performance, attracting world-class musicians and enthusiastic audiences alike. With a seating capacity of approximately 9,500, it provides an intimate experience while showcasing the beauty of the surrounding foothills. Known for its vibrant history, Red Rocks has hosted legendary acts from The Beatles to U2, making it a cherished landmark in the music world and a must-visit destination for music lovers and outdoor enthusiasts.",
+  "category": "venue",
+  "coords": {
+    "view": {
+      "latitude": 39.66515803,
+      "longitude": -105.20664675
+    },
+    "marker": {
+      "latitude": 39.665542801567476,
+      "longitude": -105.20513606834602
+    }
+  },
+  "created": "2024-10-24T12:34:56-04:00",
+  "websites": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre",
+    "default": "https://www.redrocksonline.com/",
+    "youtube": "https://www.youtube.com/channel/UCK36AQt-u4CLisfkFtkIxYw"
+  },
+  "image_url": "redrocks.png"
+}
+
+
+{
+  "title": "Madison Square Garden",
+  "description": "Madison Square Garden, often regarded as the \"Mecca of Live Entertainment,\" has been a cornerstone of the music world since its opening in 1968. Hosting an incredible range of performances—from rock legends like Led Zeppelin to contemporary pop icons such as Taylor Swift—the venue is a dream stage for artists and a must-visit for fans. Its unique blend of intimacy and grandeur creates an electrifying atmosphere, while state-of-the-art acoustics ensure an unforgettable listening experience. Attending a concert at The Garden is not just a night out; it’s a moment steeped in musical history, where fans create lasting memories in one of the world’s most iconic venues",
+  "category": "venue",
+  "coords": {
+    "latitude": 40.75251764,
+    "longitude": -73.99344434
+  },
+  "created": "2024-10-24T12:34:56-04:00",
+  "websites": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Madison_Square_Garden",
+    "default": "https://www.msg.com/madison-square-garden",
+    "youtube": "https://www.youtube.com/c/madisonsquaregarden"
+  },
+  "image_url": "msg.jpg"
+}

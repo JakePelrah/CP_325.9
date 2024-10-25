@@ -31,9 +31,9 @@ let db = conn.db('lmd')
 
 ////////////////////////////////////// GET //////////////////////////////////////
 export async function getLandmarks() {
-  // const collection = db.collection('users')
-  // const results = collection.find({}).toArray()
-  // return results
+  const collection = db.collection('landmarks')
+  const results = collection.find({}).toArray()
+  return results
 }
 
 export async function getUser(userId) {
