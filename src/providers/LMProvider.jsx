@@ -39,7 +39,7 @@ export default function LMProvider({ children }) {
                 "default": "https://www.redrocksonline.com/",
                 "youtube": "https://www.youtube.com/channel/UCK36AQt-u4CLisfkFtkIxYw"
             },
-            "image_url": "redrocks.png",
+            "image_url": "red_rocks.png",
             "address": "18300 W Alameda Pkwy, Morrison, CO 80465"
         }
     )
