@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, useEffect, useRef } from "react";
 
-const LMContext = createContext();
-export const useLM = () => useContext(LMContext)
+const UserContext = createContext();
+export const useUser = () => useContext(UserContext)
 
-export default function LMProvider({ children }) {
+export default function UserProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState({})
   
     useEffect(() => {
@@ -26,10 +26,10 @@ export default function LMProvider({ children }) {
     }
 
     return (
-        <LMContext.Provider value={{
+        <UserContext.Provider value={{
             isLoggedIn, logout
         }}>
             {children}
-        </LMContext.Provider>
+        </UserContext.Provider>
     );
 };
