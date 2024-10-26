@@ -120,6 +120,11 @@ export default function LMProvider({ children }) {
         // add to map
         map.append(marker)
         document.getElementById('map').append(map)
+
+        map.addEventListener('gmp-click', (event) => {
+            console.log(event.position);
+            // Do something with event.position.
+          });
     }
 
     function getLandmarks() {

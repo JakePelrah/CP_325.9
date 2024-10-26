@@ -16,7 +16,8 @@
     },
     "marker": {
       "latitude": 39.665542801567476,
-      "longitude": -105.20513606834602
+      "longitude": -105.20513606834602,
+      "altitude": 0
     }
   },
   "created": "2024-10-24T12:34:56-04:00",
@@ -34,9 +35,23 @@
   "title": "Madison Square Garden",
   "description": "Madison Square Garden, often regarded as the \"Mecca of Live Entertainment,\" has been a cornerstone of the music world since its opening in 1968. Hosting an incredible range of performances—from rock legends like Led Zeppelin to contemporary pop icons such as Taylor Swift—the venue is a dream stage for artists and a must-visit for fans. Its unique blend of intimacy and grandeur creates an electrifying atmosphere, while state-of-the-art acoustics ensure an unforgettable listening experience. Attending a concert at The Garden is not just a night out; it’s a moment steeped in musical history, where fans create lasting memories in one of the world’s most iconic venues",
   "category": "venue",
+  "camera": {
+    "tilt": 60,
+    "range": 100,
+    "heading": 77.86
+   
+  },
   "coords": {
-    "latitude": 40.75251764,
-    "longitude": -73.99344434
+    "view": {
+      "latitude": 40.75180858,
+      "longitude": -73.99357071,
+      "altitude": 0
+    },
+    "marker": {
+      "latitude": 40.75180858,
+      "longitude": -73.99357071,
+      "altitude": 20
+    }
   },
   "created": "2024-10-24T12:34:56-04:00",
   "websites": {
@@ -44,5 +59,6 @@
     "default": "https://www.msg.com/madison-square-garden",
     "youtube": "https://www.youtube.com/c/madisonsquaregarden"
   },
-  "image_url": "msg.jpg"
+  "image_url": "msg.jpg",
+  "address":"New York, NY 10001"
 }
