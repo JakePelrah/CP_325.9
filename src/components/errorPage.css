@@ -1,0 +1,15 @@
+#container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#error-text{
+    font-weight: bold;
+    font-size: 2em;
+    color: white
+}
+

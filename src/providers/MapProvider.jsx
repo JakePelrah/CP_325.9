@@ -51,8 +51,8 @@ export default function MapProvider({ children }) {
                 });
 
                 // add to map
-                mapRef.current.append(markerRef.current)
-                mapElemRef.current.append(mapRef.current)
+                mapRef?.current?.append(markerRef.current)
+                mapElemRef?.current?.append(mapRef.current)
             })
             .catch(e => {
                 alert(e)

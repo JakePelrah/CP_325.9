@@ -84,7 +84,7 @@ authRouter.get(
 authRouter.get(
   "/oauth2/redirect/google",
   passport.authenticate("google", {
-    successReturnToOrRedirect: "/map", // Redirect to profile on success
+    successReturnToOrRedirect: "/", // Redirect to profile on success
     failureRedirect: "/", // Redirect to failure page on error
   })
 );
