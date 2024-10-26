@@ -58,7 +58,14 @@ export default function MapProvider({ children }) {
                 alert(e)
             });
 
+        // get landmarks
         getLandmarks()
+
+        // add to map on back button
+        window.onpopstate = () => {
+            mapRef?.current?.append(markerRef.current)
+            mapElemRef?.current?.append(mapRef.current)
+        }
     }, [])
 
     useEffect(() => {
@@ -109,8 +116,6 @@ export default function MapProvider({ children }) {
             setLocation,
             mapElemRef,
             landmarks,
-            updateMap,
-            updateMarker
         }}>
             {children}
         </MapContext.Provider>

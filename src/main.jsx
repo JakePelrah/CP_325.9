@@ -1,6 +1,8 @@
 import { createRoot } from 'react-dom/client'
 import MapPage from './components/MapPage.jsx'
+import Profile from './components/Profile.jsx';
 import Create from './components/CreatePage.jsx';
+
 import ErrorPage from './components/ErrorPage.jsx';
 import {
   createBrowserRouter,
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "create",
     element: <Create />
+  },
+  {
+    path: "profile",
+    element: <Profile />
   },
 ]);
 

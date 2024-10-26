@@ -1,0 +1,30 @@
+#navbar-title{
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}
+
+nav{
+    background-color: var(--body-color);
+}
+
+#profile-image{
+    clip-path: circle();
+    height: 2em;
+    width: 2em;
+}
+
+#profile-toggle{
+    background-color: transparent !important;
+    border: none;
+
+}
+
+#signin-btn,
+#signin-btn:hover {
+    background-color: var(--body-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 1em;
+}
