@@ -30,7 +30,7 @@ export default function LMProvider({ children }) {
                 "marker": {
                     "latitude": 39.665542801567476,
                     "longitude": -105.20513606834602,
-                    "altitude":30
+                    "altitude": 30
                 }
             },
             "created": "2024-10-24T12:34:56-04:00",
@@ -56,21 +56,24 @@ export default function LMProvider({ children }) {
 
     useEffect(() => {
         if (location._id && markerRef.current) {
+
+            // update marker
             markerRef.current.position = {
                 lat: location.coords.marker.latitude,
                 lng: location.coords.marker.longitude,
-                altitude: 30
+                altitude: location.coords.marker.altitude
             }
             markerRef.current.label = location.title
             markerRef.current.altitudeMode = 'RELATIVE_TO_GROUND'
             markerRef.current.extruded = true
 
+            // update map
             mapRef?.current?.flyCameraTo({
                 endCamera: {
                     center: {
                         lat: location.coords.view.latitude,
                         lng: location.coords.view.longitude,
-                        altitude: location.coords.marker.altitude
+                        altitude: location.coords.view.altitude
                     },
                     tilt: location.camera.tilt,
                     range: location.camera.range,
