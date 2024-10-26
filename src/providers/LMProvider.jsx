@@ -99,7 +99,6 @@ export default function LMProvider({ children }) {
             tilt: location.camera.tilt,
             range: location.camera.range,
             heading: location.camera.heading,
-            // defaultLabelsDisabled: true,
         });
 
         const marker = new Marker3DElement({

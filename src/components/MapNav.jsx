@@ -13,7 +13,6 @@ export default function MapNav() {
     { name: "artist", icon: BsPersonCircle },
     { name: "genre", icon: GiMusicalNotes },
     { name: "studio", icon: GiMicrophone },
-    { name: "songs", icon: GiMusicalScore },
     { name: "venue", icon: GiTheaterCurtains },
   ])
 
