@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { BsWikipedia, BsYoutube, BsLink45Deg } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
-import { useLM } from '../providers/LMProvider';
+import { useMap } from '../providers/MapProvider';
 import MapNav from './MapNav'
 import './mapPage.css'
 
 export default function MapPage() {
-  const { location } = useLM()
+  const { mapElemRef, location } = useMap()
 
 
   return (
@@ -24,7 +24,7 @@ export default function MapPage() {
         </div>
       </div>
 
-      <div id="map"></div>
+      <div ref={mapElemRef} id="map"></div>
 
       <div className='d-flex flex-column'>
         <MapNav />

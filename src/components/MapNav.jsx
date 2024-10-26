@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLM } from "../providers/LMProvider";
+import { useMap } from "../providers/MapProvider";
 import { GiMusicalScore, GiMicrophone, GiMusicalNotes, GiTheaterCurtains } from "react-icons/gi";
 import { BsPersonCircle } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid'
@@ -7,7 +7,7 @@ import './mapNav.css'
 
 
 export default function MapNav() {
-  const { landmarks, setLocation } = useLM()
+  const { landmarks, setLocation } = useMap()
 
   const [categories, _] = useState([
     { name: "artist", icon: BsPersonCircle },
@@ -18,15 +18,6 @@ export default function MapNav() {
 
   useEffect(() => {
 
-    // const button = document.createElement('button')
-    // button.innerText = 'Logout'
-    // button.classList.add('btn')
-
-    // button.onclick = logout
-    // modalRef.current = new Popover(modalRef.current, {
-    //   html: true,
-    //   content: button
-    // })
   }, [])
 
   function Category({ name, data, Icon }) {

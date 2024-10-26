@@ -59,3 +59,53 @@
     height: 4em;
     width: 4em;
 }
+
+#home {
+    background-image: url('../../images/Screenshot\ 2024-10-23\ at\ 1.30.39\ PM.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.5;
+}
+
+#signin-btn,
+#signin-btn:hover {
+    background-color: var(--body-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 1em;
+}
+
+#explore-btn {
+    background-color: var(--body-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 1em;
+}
+
+#homepage-map gmp-map-3d {
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+#homepage-title{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#home-overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(53, 53, 53, 0.504);
+    margin: auto;
+    color: white;
+    overflow: hidden;
+}
+

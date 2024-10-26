@@ -1,5 +1,4 @@
 import { createRoot } from 'react-dom/client'
-import Home from './components/HomePage.jsx';
 import MapPage from './components/MapPage.jsx'
 import Create from './components/CreatePage.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
@@ -9,17 +8,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
+import MapProvider from './providers/MapProvider.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element:  <MapPage />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "map",
-    element: <MapPage />
   },
   {
     path: "create",
@@ -29,6 +25,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <LMProvider>
-    <RouterProvider router={router} />
+    <MapProvider>
+      <RouterProvider router={router} />
+    </MapProvider>
   </LMProvider>
 )
