@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import { useUser } from '../providers/UserProvider';
-
 import './navbar.css'
 
 export default function Navbar() {

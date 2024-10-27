@@ -4,11 +4,10 @@ import "./createPage.css"
 
 export default function Create() {
     const [searchTerm, setSearchTerm] = useState('')
-    const { mapElemRef, searchRef, searchPlace,update  } = useMap()
+    const { mapElemRef, searchRef, searchPlace  } = useMap()
 
 
     useEffect(()=>{
-        update()
     },[])
 
     function search() {
