@@ -5,7 +5,7 @@ import Info  from "./Info";
 import './mapPage.css'
 
 export default function MapPage() {
-  const { mapElemRef, location } = useMap()
+  const { mapElemRef, currentLandmark } = useMap()
 
   return (
     <div className='d-flex flex-column'>
@@ -16,11 +16,13 @@ export default function MapPage() {
 
       <MapNav />
       
-      <Info location={location} />
+      <Info currentLandmark={currentLandmark} />
 
     </div>
   )
 }
+
+
 
 
 

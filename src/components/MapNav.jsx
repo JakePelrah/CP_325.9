@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useMap } from "../providers/MapProvider";
-import { GiMusicalScore, GiMicrophone, GiMusicalNotes, GiTheaterCurtains } from "react-icons/gi";
+import { GiMicrophone, GiMusicalNotes, GiTheaterCurtains } from "react-icons/gi";
 import { BsPersonCircle } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid'
 import './mapNav.css'
 
 
 export default function MapNav() {
-  const { landmarks, setLocation } = useMap()
+  const { landmarks, setCurrentLandmark  } = useMap()
 
   const [categories, _] = useState([
     { name: "artist", icon: BsPersonCircle },
@@ -23,7 +23,7 @@ export default function MapNav() {
   function Category({ name, data, Icon }) {
 
     const renderedItems = data?.map(entry =>
-      <li onClick={() => setLocation(entry)} key={uuidv4()}>
+      <li onClick={() => setCurrentLandmark (entry)} key={uuidv4()}>
         <a className="dropdown-item">{entry.title}</a>
       </li>)
 

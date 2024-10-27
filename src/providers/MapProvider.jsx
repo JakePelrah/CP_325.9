@@ -1,15 +1,16 @@
 import { createContext, useContext, useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import initialLocation from './inititalLocation.json'
+import initialLandmark from './inititalLocation.json'
 import { initMap, initPlaces, updateMap, updateMarker } from "../js/initGoogleMaps";
 
 
+// https://maps.googleapis.com/maps/api/staticmap?center=40.712776,-74.005974&zoom=19&size=600x300&maptype=satellite&markers=color:red%7Clabel:C%7C40.712776,-74.005974&key=AIzaSyDNJmTSCAiHR0XX9XkW_fSmjk7J6-lJOog
 const MapContext = createContext();
 export const useMap = () => useContext(MapContext)
 
 export default function MapProvider({ children }) {
-    const pageLocation = useLocation()
-    const [location, setLocation] = useState(initialLocation)
+    const location = useLocation()
+    const [currentLandmark, setCurrentLandmark] = useState(initialLandmark)
     const [landmarks, setLandmarks] = useState({})
     const mapRef = useRef(null)
     const markerRef = useRef(null)
@@ -18,22 +19,27 @@ export default function MapProvider({ children }) {
     const autocompleteRef = useRef(null)
 
     useEffect(() => {
-        initMap(mapRef, mapElemRef, markerRef, location)
-        initPlaces(autocompleteRef, searchRef, mapRef)
+        initMap(mapRef, mapElemRef, markerRef, currentLandmark)
         getLandmarks()
     }, [])
 
     useEffect(() => {
-        mapRef?.current?.append(markerRef.current)
+
         mapElemRef?.current?.append(mapRef.current)
-    }, [pageLocation])
+        if (location.pathname === '/create') {
+            initPlaces(autocompleteRef, searchRef, mapRef)
+        } else {
+            mapRef?.current?.append(markerRef.current)
+        }
+
+    }, [location])
 
     useEffect(() => {
-        if (location._id && markerRef.current) {
-            updateMap(mapRef, location)
-            updateMarker(markerRef, location)
+        if (currentLandmark._id && markerRef.current) {
+            updateMap(mapRef, currentLandmark)
+            updateMarker(markerRef, currentLandmark)
         }
-    }, [location])
+    }, [currentLandmark])
 
     function getLandmarks() {
         fetch('/getLandmarks')
@@ -43,8 +49,8 @@ export default function MapProvider({ children }) {
 
     return (
         <MapContext.Provider value={{
-            location,
-            setLocation,
+            currentLandmark,
+            setCurrentLandmark,
             mapElemRef,
             landmarks,
             searchRef,

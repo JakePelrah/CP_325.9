@@ -36,6 +36,12 @@ export async function getLandmarks() {
   return results
 }
 
+export async function getLandmarksByUserId(id) {
+  const collection = db.collection('landmarks')
+  const results = collection.find({}).toArray()
+  return results
+}
+
 export async function getUser(userId) {
   // userId = parseInt(userId)
   // const collection = db.collection('users')
