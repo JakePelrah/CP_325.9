@@ -3,13 +3,11 @@ import initialLandmark from './inititalLocation.json'
 import { Loader } from '@googlemaps/js-api-loader';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_MAP_KEY;
 
-
 const loader = new Loader({
     apiKey: GOOGLE_MAP_KEY,
     version: "alpha",
     libraries: ["maps3d", "places"]
 });
-
 
 const MapContext = createContext();
 export const useMap = () => useContext(MapContext)
@@ -21,7 +19,6 @@ export default function MapProvider({ children }) {
     useEffect(() => {
         getLandmarks()
     }, [])
-
 
     function getLandmarks() {
         fetch('/getLandmarks')
