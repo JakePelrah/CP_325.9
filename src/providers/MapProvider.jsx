@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import initialLocation from './inititalLocation.json'
-import { initMap, initPlaces, updateMap, updateMarker } from "../initGoogleMaps";
+import { initMap, initPlaces, updateMap, updateMarker } from "../js/initGoogleMaps";
 
 
 const MapContext = createContext();
