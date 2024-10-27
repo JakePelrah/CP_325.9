@@ -1,5 +1,26 @@
+import { useState } from "react"
+import { useMap } from "../providers/MapProvider"
 import "./createPage.css"
 
-export default function Create(){
-    return(<div></div>)
+export default function Create() {
+    const [searchTerm, setSearchTerm] = useState('')
+    const { mapElemRef, searchRef, searchPlace,  } = useMap()
+
+
+    function search() {
+        if (searchTerm) {
+            console.log(searchTerm)
+            searchPlace(searchTerm)
+        }
+    }
+
+
+    return (
+        <div>
+            <div ref={mapElemRef} id="create-map"></div>
+
+            <input ref={searchRef} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text"></input>
+            <div onClick={search}>Find</div>
+        </div>
+    )
 }

@@ -1,4 +1,12 @@
-export default function Profile(){
+import { useUser } from "../providers/UserProvider"
 
-    return(<div></div>)
+export default function Profile() {
+    const { isLoggedIn,
+        getLandmarksByUser,
+        addLandmark,
+        removeLandmark,
+        updateLandmark } = useUser()
+
+
+    return (<div>{JSON.stringify(isLoggedIn)}</div>)
 }

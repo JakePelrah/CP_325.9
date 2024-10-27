@@ -13,6 +13,8 @@ export default function MapProvider({ children }) {
     const mapRef = useRef(null)
     const markerRef = useRef(null)
     const mapElemRef = useRef(null)
+    const autocompleteRef = useRef(null)
+    const searchRef = useRef(null)
 
     useEffect(() => {
 
@@ -20,13 +22,47 @@ export default function MapProvider({ children }) {
         const loader = new Loader({
             apiKey: GOOGLE_MAP_KEY,
             version: "alpha",
-            libraries: ["maps3d"]
+            libraries: ["maps3d", "places"]
         });
 
         loader
             .load()
             .then(async (google) => {
                 const { Map3DElement, Marker3DElement } = await google.maps.importLibrary("maps3d");
+                const { Autocomplete } = await google.maps.importLibrary("places");
+
+                const autocomplete = new Autocomplete(
+                    searchRef.current,
+                    {
+                        fields: [
+                            "geometry",
+                            "name",
+                            "place_id"
+                        ],
+                    }
+                );
+                autocomplete.addListener("place_changed", () => {
+                    //viewer.entities.removeAll();
+                    const place = autocomplete.getPlace();
+                    console.log(place)
+
+                    if (!place.geometry || !place.geometry.viewport) {
+                        window.alert("No viewport for input: " + place.name);
+                        return;
+                    }
+                    zoomToViewport(place.geometry);
+                });
+
+                const zoomToViewport = async (geometry) => {
+
+                    if (mapRef.current) {
+                        mapRef.current.center = { lat: geometry.location.lat(), lng: geometry.location.lng(), altitude:   500 };
+                        mapRef.current.heading = 0;
+                        mapRef.current.range = 1000;
+                        mapRef.current.tilt = 65;
+                    }
+                };
+
 
                 mapRef.current = new Map3DElement({
                     center: {
@@ -116,6 +152,7 @@ export default function MapProvider({ children }) {
             setLocation,
             mapElemRef,
             landmarks,
+            searchRef
         }}>
             {children}
         </MapContext.Provider>
