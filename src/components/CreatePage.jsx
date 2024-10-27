@@ -7,7 +7,6 @@ export default function Create() {
     const [place, setPlace] = useState(null)
     const [clickLocation, setClickLocation] = useState(null)
     const searchRef = useRef(null)
-    const autocompleteRef = useRef(null)
     const mapRef = useRef(null)
     const mapElemRef = useRef(null)
 
@@ -46,7 +45,7 @@ export default function Create() {
         loader.importLibrary('places')
             .then(async ({ Autocomplete }) => {
 
-                autocompleteRef.current = new Autocomplete(
+                const autocomplete = new Autocomplete(
                     searchRef.current,
                     {
                         fields: [
@@ -57,8 +56,8 @@ export default function Create() {
                     }
                 );
 
-                autocompleteRef.current.addListener("place_changed", () => {
-                    const place = autocompleteRef.current.getPlace();
+                autocomplete.addListener("place_changed", () => {
+                    const place = autocomplete.getPlace();
                     setPlace(place)
                     if (!place.geometry || !place.geometry.viewport) {
                         window.alert("No viewport for input: " + place.name);
@@ -77,7 +76,6 @@ export default function Create() {
             mapRef.current.tilt = 65;
         }
     };
-
 
     return (
         <div>

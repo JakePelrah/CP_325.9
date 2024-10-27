@@ -29,7 +29,6 @@ export default function MapProvider({ children }) {
             .then(setLandmarks)
     }
 
-
     return (
         <MapContext.Provider value={{
             landmarks,
