@@ -1,7 +1,8 @@
 :root {
-  --sidebar-color-text: #ffffff8a;
+  --sidebar-color-text: #ffffff;
   --sidebar-color: #29334e;
   --info-color: #3d294e88;
+  --scrollbar-thumb:#ffffff86;
 }
 
 @font-face {

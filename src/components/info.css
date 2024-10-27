@@ -13,7 +13,7 @@
 #description {
     color: var(--sidebar-color-text);
     overflow-y: scroll;
-    scrollbar-color: var(--sidebar-color-text) var(--sidebar-color);
+    scrollbar-color: var(--scrollbar-thumb) var(--sidebar-color);
 }
 #description .title {
     font-weight: bold;
