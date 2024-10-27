@@ -1,0 +1,28 @@
+#info {
+    background-color: var(--sidebar-color);
+    border-radius: .2em;
+    height: 33vh;
+}
+#info img {
+    height: 10em;
+    width: 10em;
+    object-fit: cover;
+    margin: 1em;
+}
+
+#description {
+    color: var(--sidebar-color-text);
+    overflow-y: scroll;
+    scrollbar-color: var(--sidebar-color-text) var(--sidebar-color);
+}
+#description .title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#bio {
+    border-left: 1px rgba(255, 255, 255, 0.191) solid;
+}
+#bio a {
+    color: var(--sidebar-color-text);
+}

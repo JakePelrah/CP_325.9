@@ -46,7 +46,7 @@ export default function MapNav() {
       data={landmarks[category.name]}
       Icon={category.icon} />)
 
-  return (<div id="map-nav" className="d-flex justify-content-around m-3 p-2" >
+  return (<div id="map-nav" className="d-flex justify-content-around p-2" >
     {renderCategories}
   </div>)
 }

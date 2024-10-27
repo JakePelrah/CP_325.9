@@ -25,11 +25,11 @@ export default function MapProvider({ children }) {
 
     useEffect(() => {
 
-        mapElemRef?.current?.append(mapRef.current)
         if (location.pathname === '/create') {
             initPlaces(autocompleteRef, searchRef, mapRef)
         } else {
-            mapRef?.current?.append(markerRef.current)
+            // mapElemRef?.current?.append(mapRef.current)
+            // mapRef?.current?.append(markerRef.current)
         }
 
     }, [location])

@@ -2,7 +2,6 @@
   --sidebar-color-text: #ffffff8a;
   --sidebar-color: #29334e;
   --info-color: #3d294e88;
-  --body-color: #29334eac;
 }
 
 @font-face {
@@ -10,8 +9,9 @@
   src: url('../fonts/Roboto/Roboto-Regular.ttf');
 }
 
-html, body {
-  background-color: var(--body-color);
+html,
+body {
+  background-color: var(--sidebar-color);
   font-family: 'Roboto';
   height: 100%;
 }

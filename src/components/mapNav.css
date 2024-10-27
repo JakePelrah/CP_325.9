@@ -6,4 +6,5 @@
 
 #map-nav{
   background-color: var(--sidebar-color);
+  border-bottom: 1px solid var(--sidebar-color-text);
 }

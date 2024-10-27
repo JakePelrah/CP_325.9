@@ -1,8 +1,9 @@
+import './info.css'
 import { BsWikipedia, BsYoutube, BsLink45Deg } from "react-icons/bs";
 
 export default function Info({ currentLandmark }) {
 
-    return (<div id="info" className="d-flex mx-3">
+    return (<div id="info" className="d-flex">
       <div id="description" className="d-flex flex-column mx-3 mt-3">
         <div className="mb-3">
           <span className="title">{currentLandmark.title}  </span>
