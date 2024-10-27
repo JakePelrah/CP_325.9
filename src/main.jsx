@@ -11,13 +11,13 @@ import {
 import './index.css'
 import MapProvider from './providers/MapProvider.jsx';
 import UserProvider from './providers/UserProvider.jsx';
-import RRProvider from './providers/RRProvider.jsx';
+import Navbar from './components/Navbar.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <RRProvider />,
+    element: <Navbar />,
     children: [
       {
         path: "/",
@@ -37,5 +37,10 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <UserProvider>
+    <MapProvider>
+      <RouterProvider router={router} />
+    </MapProvider>
+  </UserProvider>
+
 )
