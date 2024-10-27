@@ -4,24 +4,14 @@ import "./createPage.css"
 
 export default function Create() {
     const [searchTerm, setSearchTerm] = useState('')
-    const { mapElemRef, searchRef, searchPlace  } = useMap()
-
-
-    useEffect(()=>{
-    },[])
-
-    function search() {
-        if (searchTerm) {
-            console.log(searchTerm)
-            searchPlace(searchTerm)
-        }
-    }
+    const { mapElemRef, searchRef, place } = useMap()
 
 
     return (
         <div>
             <div ref={mapElemRef} id="create-map"></div>
             <input className="form-control" ref={searchRef} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text"></input>
+            <div className="text-white">{JSON.stringify(place)}</div>
         </div>
     )
 }

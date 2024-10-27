@@ -7,7 +7,7 @@ const loader = new Loader({
     libraries: ["maps3d", "places"]
 });
 
-export function initPlaces(autocompleteRef, searchRef, mapRef) {
+export function initPlaces(autocompleteRef, searchRef, mapRef, setPlace) {
 
     loader.importLibrary('places')
         .then(async ({ Autocomplete }) => {
@@ -25,6 +25,7 @@ export function initPlaces(autocompleteRef, searchRef, mapRef) {
 
             autocompleteRef.current.addListener("place_changed", () => {
                 const place = autocompleteRef.current.getPlace();
+                setPlace(place)
                 if (!place.geometry || !place.geometry.viewport) {
                     window.alert("No viewport for input: " + place.name);
                     return;

@@ -16,10 +16,6 @@ export default function MapNav() {
     { name: "venue", icon: GiTheaterCurtains },
   ])
 
-  useEffect(() => {
-
-  }, [])
-
   function Category({ name, data, Icon }) {
 
     const renderedItems = data?.map(entry =>

@@ -12,6 +12,7 @@ export default function MapProvider({ children }) {
     const location = useLocation()
     const [currentLandmark, setCurrentLandmark] = useState(initialLandmark)
     const [landmarks, setLandmarks] = useState({})
+    const [place, setPlace] = useState(null)
     const mapRef = useRef(null)
     const markerRef = useRef(null)
     const mapElemRef = useRef(null)
@@ -26,7 +27,7 @@ export default function MapProvider({ children }) {
     useEffect(() => {
 
         if (location.pathname === '/create') {
-            initPlaces(autocompleteRef, searchRef, mapRef)
+            initPlaces(autocompleteRef, searchRef, mapRef, setPlace)
         } else {
             // mapElemRef?.current?.append(mapRef.current)
             // mapRef?.current?.append(markerRef.current)
@@ -54,6 +55,7 @@ export default function MapProvider({ children }) {
             mapElemRef,
             landmarks,
             searchRef,
+            place
         }}>
             {children}
         </MapContext.Provider>
