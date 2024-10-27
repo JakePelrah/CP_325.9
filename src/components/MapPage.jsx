@@ -1,10 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useMap } from '../providers/MapProvider';
-import Navbar from './Navbar'
 import MapNav from './MapNav'
 import Info from "./Info";
 import './mapPage.css'
-
 
 export default function MapPage() {
   const { loader, currentLandmark } = useMap()
@@ -14,10 +12,6 @@ export default function MapPage() {
 
   useEffect(() => {
     initMap()
-    return () => {
-      markerRef.current = null
-      mapRef.current = null
-    }
   }, [])
 
   useEffect(() => {

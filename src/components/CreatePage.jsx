@@ -1,13 +1,11 @@
 import { useEffect, useState, useRef } from "react"
 import { useMap } from "../providers/MapProvider"
-import initialLandmark from '../providers/inititalLocation.json'
 import "./createPage.css"
 
 export default function Create() {
-    const { loader } = useMap()
+    const { loader, currentLandmark } = useMap()
     const [place, setPlace] = useState(null)
     const [clickLocation, setClickLocation] = useState(null)
-    const [currentLandmark, _] = useState(initialLandmark)
     const searchRef = useRef(null)
     const autocompleteRef = useRef(null)
     const mapRef = useRef(null)
@@ -40,7 +38,6 @@ export default function Create() {
                 });
 
                 mapElemRef?.current?.append(mapRef.current)
-                console.log('Initializing create map.')
             })
     }
 
@@ -88,7 +85,6 @@ export default function Create() {
             <input className="form-control" ref={searchRef} type="text"></input>
             <div className="text-white">{JSON.stringify(place)}</div>
             <div className="text-white">{JSON.stringify(clickLocation)}</div>
-
         </div>
     )
 }
