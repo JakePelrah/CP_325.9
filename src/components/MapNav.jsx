@@ -30,8 +30,8 @@ export default function MapNav() {
     return (
       <div className="dropdown">
         <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <Icon size={32} className="me-4" />
-          <span>{name}</span>
+          <Icon size={32} className="me-2" />
+          <span className="titlecase">{name}</span>
         </button>
         <ul className="dropdown-menu">
           {renderedItems}
