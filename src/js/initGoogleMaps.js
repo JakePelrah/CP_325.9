@@ -70,9 +70,8 @@ export function initMap(mapRef, mapElemRef, markerRef, location) {
                 label: location.title
             });
 
-            // add to map
             mapRef?.current?.append(markerRef.current)
-            mapElemRef?.current?.append(mapRef.current)
+            mapElemRef?.current?.append(mapRef.current)       
         })
 }
 

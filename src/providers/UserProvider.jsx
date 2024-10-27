@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, useEffect} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const UserContext = createContext();
 export const useUser = () => useContext(UserContext)
 
 export default function UserProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState({})
-    const [userLandmarks, setUserLandmarks]=useState([])
+    const [userLandmarks, setUserLandmarks] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/isLoggedIn')
@@ -16,8 +16,8 @@ export default function UserProvider({ children }) {
     useEffect(() => {
         if (isLoggedIn.id) {
             fetch(`/getLandmarksByUserId/${isLoggedIn.id}`)
-            .then(res=>res.json())
-            .then(setUserLandmarks)
+                .then(res => res.json())
+                .then(setUserLandmarks)
         }
     }, [isLoggedIn])
 
