@@ -4,7 +4,6 @@ import initialLandmark from './inititalLocation.json'
 import { initMap, initPlaces, updateMap, updateMarker } from "../js/initGoogleMaps";
 
 
-// https://maps.googleapis.com/maps/api/staticmap?center=40.712776,-74.005974&zoom=19&size=600x300&maptype=satellite&markers=color:red%7Clabel:C%7C40.712776,-74.005974&key=AIzaSyDNJmTSCAiHR0XX9XkW_fSmjk7J6-lJOog
 const MapContext = createContext();
 export const useMap = () => useContext(MapContext)
 
@@ -13,6 +12,8 @@ export default function MapProvider({ children }) {
     const [currentLandmark, setCurrentLandmark] = useState(initialLandmark)
     const [landmarks, setLandmarks] = useState({})
     const [place, setPlace] = useState(null)
+    const [clickLocation, setClickLocation] = useState(null)
+
     const mapRef = useRef(null)
     const markerRef = useRef(null)
     const mapElemRef = useRef(null)
@@ -20,9 +21,10 @@ export default function MapProvider({ children }) {
     const autocompleteRef = useRef(null)
 
     useEffect(() => {
-        initMap(mapRef, mapElemRef, markerRef, currentLandmark)
+        initMap(mapRef, mapElemRef, markerRef, currentLandmark, setClickLocation)
         getLandmarks()
     }, [])
+
 
     useEffect(() => {
 
@@ -55,7 +57,8 @@ export default function MapProvider({ children }) {
             mapElemRef,
             landmarks,
             searchRef,
-            place
+            place,
+            clickLocation
         }}>
             {children}
         </MapContext.Provider>

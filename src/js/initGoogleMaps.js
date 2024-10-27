@@ -45,7 +45,7 @@ function zoomToViewport(geometry, mapRef) {
 };
 
 
-export function initMap(mapRef, mapElemRef, markerRef, location) {
+export function initMap(mapRef, mapElemRef, markerRef, location, setClickLocation) {
     loader.importLibrary('maps3d')
         .then(async ({ Map3DElement, Marker3DElement }) => {
 
@@ -70,6 +70,12 @@ export function initMap(mapRef, mapElemRef, markerRef, location) {
                 extruded: true,
                 label: location.title
             });
+
+            mapRef.current.addEventListener('gmp-click', (event) => {
+                setClickLocation(event.position)
+                // Do something with event.position.
+              });
+            
 
             mapRef?.current?.append(markerRef.current)
             mapElemRef?.current?.append(mapRef.current)       

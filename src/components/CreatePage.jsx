@@ -4,7 +4,7 @@ import "./createPage.css"
 
 export default function Create() {
     const [searchTerm, setSearchTerm] = useState('')
-    const { mapElemRef, searchRef, place } = useMap()
+    const { mapElemRef, searchRef, place, clickLocation } = useMap()
 
 
     return (
@@ -12,6 +12,8 @@ export default function Create() {
             <div ref={mapElemRef} id="create-map"></div>
             <input className="form-control" ref={searchRef} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text"></input>
             <div className="text-white">{JSON.stringify(place)}</div>
+            <div className="text-white">{JSON.stringify(clickLocation)}</div>
+
         </div>
     )
 }
