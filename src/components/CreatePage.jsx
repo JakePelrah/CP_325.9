@@ -176,18 +176,14 @@ export default function Create() {
                         </div>
                     </div>
 
-                    <div class="col">
-                        <div class="">
-                            <label for="floatingPassword">Marker Label</label>
-                            <input value={markerLabel} onChange={(e) => setMarkerLabel(e.target.value)} type="text" className="form-control" />
-                        </div>
-                    </div>
+                
                     <div class="col">
                         <div class="">
                             <label className="custom-file-upload">Choose landmark image:</label>
                             <input type="file" id="landmark-image" accept="image/png, image/jpeg" />
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="row">
