@@ -20,23 +20,23 @@ export default function Info({ currentLandmark, tilt, heading, range, roll, alti
             <td>{longitude?.toFixed(2)}</td>
           </tr>
           <tr>
-            <td className="fw-bold">Tilt:</td>
+            <td className="fw-bold">Tlt:</td>
             <td>{tilt?.toFixed(2)}</td>
           </tr>
           <tr>
-            <td className="fw-bold">Heading:</td>
+            <td className="fw-bold">Hdg:</td>
             <td>{heading?.toFixed(2)}</td>
           </tr>
           <tr>
-            <td className="fw-bold">Altitude:</td>
+            <td className="fw-bold">Alt:</td>
             <td>{altitude?.toFixed(2)}</td>
           </tr>
           <tr>
-            <td className="fw-bold">Range:</td>
+            <td className="fw-bold">Rn:</td>
             <td>{range?.toFixed(2)}</td>
           </tr>
           <tr>
-            <td className="fw-bold">Roll:</td>
+            <td className="fw-bold">Rll:</td>
             <td>{roll?.toFixed(2)}</td>
           </tr>
         </tbody>
