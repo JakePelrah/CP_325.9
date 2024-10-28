@@ -162,65 +162,55 @@ export default function Create() {
 
             <div id="create-form" className="mx-5 px-5">
 
-                <div class="mb-3">
-                    <label for="floatingInput">Search</label>
-                    <input className="form-control" ref={searchRef} type="text"></input>
-                </div>
-
                 <div class="row">
-
-                    <div class="col">
-                        <div class="m">
-                            <label for="floatingInput">Landmark Title</label>
-                            <input value={landMarkTitle} onChange={(e) => setlandMarkTitle(e.target.value)} type="text" className="form-control" />
-                        </div>
+                    <div class="col mb-3">
+                        <label for="floatingInput">Search</label>
+                        <input className="form-control" ref={searchRef} type="text"></input>
                     </div>
 
-                
                     <div class="col">
-                        <div class="">
-                            <label className="custom-file-upload">Choose landmark image:</label>
-                            <input type="file" id="landmark-image" accept="image/png, image/jpeg" />
-                        </div>
+                        <label for="floatingInput">Landmark Title</label>
+                        <input value={landMarkTitle} onChange={(e) => setlandMarkTitle(e.target.value)} type="text" className="form-control" />
                     </div>
-                    
+
                 </div>
 
-                <div class="row">
+                <div class="row mt-1">
                     <div class="col">
                         <label for="floatingTextarea">Landmark Description</label>
                         <textarea
                             value={landMarkDescription} onChange={(e) => setlandMarkDescription(e.target.value)}
-                            style={{ 'height': '5em' }}
+                            style={{ 'height': '6.2em' }}
                             class="form-control"></textarea>
+                        
+                        <div class="mt-4">
+                            <label for="image-upload" className="custom-file-upload">Choose landmark image:</label>
+                            <input id="image-upload" type="file" accept="image/png, image/jpeg" />
+                        </div>
                     </div>
-                </div>
 
-
-                <div class="row">
                     <div class="col">
                         <div class="">
                             <label for="floatingPassword">Default URL</label>
                             <input type="text" className="form-control" />
                         </div>
-                    </div>
-                    <div class="col">
                         <div class="">
                             <label for="floatingPassword">Wiki URL</label>
                             <input type="text" className="form-control" />
                         </div>
-                    </div>
-                    <div class="col">
                         <div class="">
                             <label for="floatingPassword">YouTube URL</label>
                             <input type="text" className="form-control" />
                         </div>
                     </div>
+
+                </div>
+
+                <div className="mt-3">
+                    <button className="btn submit-btn mt-2" onSubmit={submit}>Create Landmark</button>
                 </div>
 
 
-
-                <button onSubmit={submit}>Create Landmark</button>
             </div>
         </div>
     )
