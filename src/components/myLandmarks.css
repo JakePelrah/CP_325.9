@@ -1,17 +1,22 @@
-#profile{
+#my-landmark{
     color: aliceblue;
 }
 
 
-.lm-profile-img{
+.lm-my-landmark-img{
     width: 5em;
     height: 5em;
 }
 
-.profile-btn{
+.my-landmark-btn{
     background-color: var( --sidebar-color-text);
 }
 
 td{
     align-content: center;
+}
+
+#my-landmarks td{
+    background-color: aliceblue;
+    
 }

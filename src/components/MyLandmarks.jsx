@@ -3,7 +3,7 @@ import { FaRegEdit, FaTrash } from "react-icons/fa";
 import './myLandmarks.css'
 
 export default function MyLandmarks() {
-    const { isLoggedIn, userLandmarks } = useUser()
+    const {userLandmarks } = useUser()
 
     const renderedLandmarks = userLandmarks.map(lm =>
         <tr>
@@ -16,9 +16,9 @@ export default function MyLandmarks() {
             </td>
         </tr>
     )
-    return (<div id="my-landmark">
+    return (<div className="d-flex m-5" id="my-landmark">
       
-        <table class="table mt-5">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Title</th>

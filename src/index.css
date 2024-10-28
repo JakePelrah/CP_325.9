@@ -2,6 +2,7 @@
   --sidebar-color-text: #ffffff;
   --sidebar-color: #29334e;
   --scrollbar-thumb:#ffffff86;
+  --bg-color:#29334eaa;
 }
 
 @font-face {
@@ -11,7 +12,7 @@
 
 html,
 body {
-  background-color: var(--sidebar-color);
+  background-color: var(--bg-color);
   font-family: 'Roboto';
   height: 100%;
 }

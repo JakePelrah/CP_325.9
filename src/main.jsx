@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client'
 import MapPage from './components/MapPage.jsx'
-import MyLandmarks from './components/MyLandmarks.jsx';
 import Create from './components/CreatePage.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import {
