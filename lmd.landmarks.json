@@ -1,0 +1,98 @@
+[{
+  "_id": {
+    "$oid": "671c2a53e1d881679cf2ad42"
+  },
+  "title": "Red Rocks Amphitheatre",
+  "description": "Red Rocks Amphitheatre, located just outside Denver, Colorado, is a breathtaking outdoor concert venue renowned for its stunning natural acoustics and dramatic red sandstone formations. Nestled in a picturesque setting, the amphitheater offers a unique blend of natural beauty and artistic performance, attracting world-class musicians and enthusiastic audiences alike. With a seating capacity of approximately 9,500, it provides an intimate experience while showcasing the beauty of the surrounding foothills. Known for its vibrant history, Red Rocks has hosted legendary acts from The Beatles to U2, making it a cherished landmark in the music world and a must-visit destination for music lovers and outdoor enthusiasts.",
+  "category": "venue",
+  "camera": {
+    "tilt": 60,
+    "range": 100,
+    "heading": 77.86
+  },
+  "coords": {
+    "view": {
+      "latitude": 39.66515803,
+      "longitude": -105.20664675,
+      "altitude": 2000
+    },
+    "marker": {
+      "latitude": 39.665542801567476,
+      "longitude": -105.20513606834602
+    }
+  },
+  "created": "2024-10-24T12:34:56-04:00",
+  "websites": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre",
+    "default": "https://www.redrocksonline.com/",
+    "youtube": "https://www.youtube.com/channel/UCK36AQt-u4CLisfkFtkIxYw"
+  },
+  "image_url": "red_rocks.png",
+  "address": "18300 W Alameda Pkwy, Morrison, CO 80465"
+},
+{
+  "_id": {
+    "$oid": "671c309de1d881679cf2ad4a"
+  },
+  "title": "Abbey Road Studios",
+  "description": "Abbey Road Studios, located in London, is one of the most iconic recording studios in music history, primarily known as the birthplace of many legendary albums by The Beatles, including \"Abbey Road\" and \"Sgt. Pepper's Lonely Hearts Club Band.\" Established in 1931, the studio has attracted a diverse range of artists across genres, from Pink Floyd and David Bowie to contemporary stars like Adele and Radiohead. Its distinctive zebra crossing has become a symbol of the band and a pilgrimage site for fans. Renowned for its exceptional acoustics and state-of-the-art technology, Abbey Road Studios continues to be a vital hub for music creation, inspiring new generations of musicians while remaining deeply rooted in its storied past.",
+  "category": "studio",
+  "camera": {
+    "tilt": 35,
+    "range": 150,
+    "heading": 200.04
+  },
+  "coords": {
+    "view": {
+      "latitude": 51.53198328,
+      "longitude": -0.17789081,
+      "altitude": 11.61158634
+    },
+    "marker": {
+      "latitude": 51.53213359,
+      "longitude": -0.17790999,
+      "altitude": 20
+    }
+  },
+  "created": "2024-10-24T12:34:56-04:00",
+  "websites": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Abbey_Road_Studios",
+    "default": "https://www.abbeyroad.com/",
+    "youtube": "https://www.youtube.com/@abbeyroad"
+  },
+  "image_url": "abbey_road_studios.png",
+  "address": "3 Abbey Rd., London NW8 9AY, UK"
+},
+{
+  "_id": {
+    "$oid": "671c48df50a4e561e7f4ffcd"
+  },
+  "title": "Madison Square Garden",
+  "description": "Madison Square Garden, often regarded as the \"Mecca of Live Entertainment,\" has been a cornerstone of the music world since its opening in 1968. Hosting an incredible range of performances—from rock legends like Led Zeppelin to contemporary pop icons such as Taylor Swift—the venue is a dream stage for artists and a must-visit for fans. Its unique blend of intimacy and grandeur creates an electrifying atmosphere, while state-of-the-art acoustics ensure an unforgettable listening experience. Attending a concert at The Garden is not just a night out; it’s a moment steeped in musical history, where fans create lasting memories in one of the world’s most iconic venues",
+  "category": "venue",
+  "camera": {
+    "tilt": 60,
+    "range": 100,
+    "heading": 0
+  },
+  "coords": {
+    "view": {
+      "latitude": 40.74923474444732,
+      "longitude": -73.99332127046563,
+      "altitude": 100
+    },
+    "marker": {
+      "latitude": 40.75051095194075,
+      "longitude": -73.99345720351658,
+      "altitude": 50
+    }
+  },
+  "created": "2024-10-24T12:34:56-04:00",
+  "websites": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Madison_Square_Garden",
+    "default": "https://www.msg.com/madison-square-garden",
+    "youtube": "https://www.youtube.com/c/madisonsquaregarden"
+  },
+  "image_url": "madison_square_garden.png",
+  "address": "New York, NY 10001"
+}]

@@ -1,6 +1,6 @@
 #create-map gmp-map-3d {
     width: 100vw;
-    height: 50vh;
+    height: 40vh;
 }
 
 .pac-controls {
@@ -54,3 +54,25 @@
     font-weight: 500;
     padding: 6px 12px;
   }
+
+th, td, tr{
+  background-color: var(--sidebar-color) !important;
+  border-color: var(--scrollbar-thumb) !important;
+  color: white !important;
+}
+
+table{
+  table-layout: fixed;
+}
+
+#create-form{
+  overflow: hidden;
+}
+
+label{
+  color: white;
+}
+
+#landmark-image{
+  color: white;
+}
