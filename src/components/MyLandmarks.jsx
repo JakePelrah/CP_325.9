@@ -41,7 +41,7 @@ export default function MyLandmarks() {
     )
     return (
         <>
-            <div className="d-flex m-5" id="my-landmark">
+            <div className="d-flex" id="my-landmarks">
 
                 <table class="table">
                     <thead>

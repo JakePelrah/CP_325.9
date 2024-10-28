@@ -1,22 +1,12 @@
-#my-landmark{
-    color: aliceblue;
-}
-
-
-.lm-my-landmark-img{
+.lm-my-landmark-img {
     width: 5em;
     height: 5em;
 }
 
-.my-landmark-btn{
-    background-color: var( --sidebar-color-text);
+.my-landmark-btn {
+    background-color: var(--sidebar-color-text);
 }
 
-td{
+td {
     align-content: center;
-}
-
-#my-landmarks td{
-    background-color: aliceblue;
-    
 }
