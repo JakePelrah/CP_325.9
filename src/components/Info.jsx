@@ -5,44 +5,46 @@ import './info.css'
 export default function Info({ currentLandmark, tilt, heading, range, roll, altitude, latitude,
   longitude }) {
 
+  const hideStats = false
 
   return (<div id="info" className="d-flex">
 
-    <div id="stats">
-      <table className="mx-3 mt-3">
-        <tbody>
-          <tr>
-            <td className="fw-bold">Lat:</td>
-            <td>{latitude?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="fw-bold">Lng:</td>
-            <td>{longitude?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="fw-bold">Tlt:</td>
-            <td>{tilt?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="fw-bold">Hdg:</td>
-            <td>{heading?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="fw-bold">Alt:</td>
-            <td>{altitude?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="fw-bold">Rn:</td>
-            <td>{range?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="fw-bold">Rll:</td>
-            <td>{roll?.toFixed(2)}</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
+    {hideStats ? null :
+      <div id="stats">
+        <table className="mx-3 mt-3">
+          <tbody>
+            <tr>
+              <td className="fw-bold">Lat:</td>
+              <td>{latitude}</td>
+            </tr>
+            <tr>
+              <td className="fw-bold">Lng:</td>
+              <td>{longitude}</td>
+            </tr>
+            <tr>
+              <td className="fw-bold">Tlt:</td>
+              <td>{tilt?.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td className="fw-bold">Hdg:</td>
+              <td>{heading?.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td className="fw-bold">Alt:</td>
+              <td>{altitude?.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td className="fw-bold">Rn:</td>
+              <td>{range?.toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td className="fw-bold">Rll:</td>
+              <td>{roll?.toFixed(2)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    }
 
     <div id="description" className="d-flex flex-column mx-3 mt-3">
       <div className="mb-3">
