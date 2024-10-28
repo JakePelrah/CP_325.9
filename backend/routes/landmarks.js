@@ -5,7 +5,7 @@ import { getLandmarks } from "../db/index.js";
 export const landmarkRouter = express.Router();
 
 
-landmarkRouter.get('/getLandmarks', (req, res) => {
+landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
    let landmarks = {
       'venue': [],
       'studio': [],
@@ -21,6 +21,15 @@ landmarkRouter.get('/getLandmarks', (req, res) => {
          }
          res.json(landmarks)
       })
+   }
+   catch (e) {
+      res.json({})
+   }
+})
+
+landmarkRouter.get('/getLandmarks', (req, res) => {
+   try {
+      getLandmarks().then(landmarks => res.json(landmarks))
    }
    catch (e) {
       res.json({})

@@ -5,21 +5,12 @@ export const useUser = () => useContext(UserContext)
 
 export default function UserProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState({})
-    const [userLandmarks, setUserLandmarks] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/isLoggedIn')
             .then(res => res.json())
             .then(setIsLoggedIn)
     }, [])
-
-    useEffect(() => {
-        if (isLoggedIn.id) {
-            fetch(`/getLandmarksByUserId/${isLoggedIn.id}`)
-                .then(res => res.json())
-                .then(setUserLandmarks)
-        }
-    }, [isLoggedIn])
 
     function logout() {
         fetch('http://localhost:3000/logout', { method: 'POST' })
@@ -34,7 +25,7 @@ export default function UserProvider({ children }) {
 
     return (
         <UserContext.Provider value={{
-            isLoggedIn, logout, userLandmarks
+            isLoggedIn, logout
         }}>
             {children}
         </UserContext.Provider>

@@ -7,7 +7,7 @@ import './mapNav.css'
 
 
 export default function MapNav() {
-  const { landmarks, setCurrentLandmark  } = useMap()
+  const {  landmarksByCategory, setCurrentLandmark  } = useMap()
 
   const [categories, _] = useState([
     { name: "artist", icon: BsPersonCircle },
@@ -39,7 +39,7 @@ export default function MapNav() {
   const renderCategories = categories?.map(category =>
     <Category key={uuidv4()}
       name={category.name}
-      data={landmarks[category.name]}
+      data={landmarksByCategory[category.name]}
       Icon={category.icon} />)
 
   return (<div id="map-nav" className="d-flex justify-content-around p-2" >

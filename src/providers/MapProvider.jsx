@@ -13,12 +13,20 @@ const MapContext = createContext();
 export const useMap = () => useContext(MapContext)
 
 export default function MapProvider({ children }) {
-    const [landmarks, setLandmarks] = useState({})
+    const [landmarksByCategory, setLandmarksByCategory] = useState({})
+    const [landmarks, setLandmarks] = useState([])
     const [currentLandmark, setCurrentLandmark] = useState(initialLandmark)
 
     useEffect(() => {
+        getLandmarksByCategory()
         getLandmarks()
     }, [])
+
+    function getLandmarksByCategory() {
+        fetch('/getLandmarksByCategory')
+            .then(res => res.json())
+            .then(setLandmarksByCategory)
+    }
 
     function getLandmarks() {
         fetch('/getLandmarks')
@@ -26,9 +34,11 @@ export default function MapProvider({ children }) {
             .then(setLandmarks)
     }
 
+
     return (
         <MapContext.Provider value={{
             landmarks,
+            landmarksByCategory,
             loader,
             setCurrentLandmark,
             currentLandmark

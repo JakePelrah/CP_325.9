@@ -1,11 +1,11 @@
-import { useUser } from "../providers/UserProvider"
+import { useMap } from "../providers/MapProvider";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
 import './myLandmarks.css'
 
 export default function MyLandmarks() {
-    const {userLandmarks } = useUser()
+    const {landmarks } = useMap()
 
-    const renderedLandmarks = userLandmarks.map(lm =>
+    const renderedLandmarks = landmarks?.map(lm =>
         <tr>
             <td>{lm.title}</td>
             <td>{lm.category}</td>
