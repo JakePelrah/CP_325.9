@@ -9,6 +9,15 @@ export default function MapPage() {
   const mapRef = useRef(null)
   const markerRef = useRef(null)
   const mapElemRef = useRef(null)
+  const [tilt, setTilt] = useState(0)
+  const [heading, setHeading] = useState(0)
+  const [range, setRange] = useState(0)
+  const [roll, setRoll] = useState(0)
+  const [altitude, setAltitude] = useState(0)
+  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(0)
+
+
 
   useEffect(() => {
     initMap()
@@ -34,6 +43,34 @@ export default function MapPage() {
           tilt: currentLandmark.camera.tilt,
           range: currentLandmark.camera.range,
           heading: currentLandmark.camera.heading,
+        });
+
+        mapRef.current.addEventListener("gmp-centerchange", () => {
+          const { altitude, lat, lng } = mapRef.current.center
+          setAltitude(altitude)
+          setLatitude(lat)
+          setLongitude(lng)
+        });
+
+        mapRef.current.addEventListener("gmp-click", (event) => {
+          console.log(JSON.stringify(event.position))
+        });
+
+
+        mapRef.current.addEventListener("gmp-headingchange", () => {
+          setHeading(mapRef.current.heading)
+        });
+
+        mapRef.current.addEventListener("gmp-rangechange", () => {
+          setRange(mapRef.current.range)
+        });
+
+        mapRef.current.addEventListener("gmp-rollchange", () => {
+          setRoll(mapRef.current.roll)
+        });
+
+        mapRef.current.addEventListener("gmp-tiltchange", () => {
+          setTilt(mapRef.current.tilt)
         });
 
         markerRef.current = new Marker3DElement({
@@ -88,17 +125,17 @@ export default function MapPage() {
 
 
       <div ref={mapElemRef} id="map"></div>
-
       <MapNav />
-
-      <Info currentLandmark={currentLandmark} />
+      <Info currentLandmark={currentLandmark} tilt={tilt}
+        heading={heading}
+        range={range}
+        roll={roll}
+        altitude={altitude}
+        latitude={latitude}
+        longitude={longitude} />
 
     </div>
   )
 }
-
-
-
-
 
 

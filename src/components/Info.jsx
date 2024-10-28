@@ -1,27 +1,68 @@
-import './info.css'
 import { BsWikipedia, BsYoutube, BsLink45Deg } from "react-icons/bs";
+import './info.css'
 
-export default function Info({ currentLandmark }) {
 
-    return (<div id="info" className="d-flex">
-      <div id="description" className="d-flex flex-column mx-3 mt-3">
-        <div className="mb-3">
-          <span className="title">{currentLandmark.title}  </span>
-          <span className="address">- {currentLandmark.address}</span>
-        </div>
-        <p>
-          {currentLandmark.description}
-        </p>
+export default function Info({ currentLandmark, tilt, heading, range, roll, altitude, latitude,
+  longitude }) {
+
+
+  return (<div id="info" className="d-flex">
+
+    <div id="stats">
+      <table className="mx-3 mt-3">
+        <tbody>
+          <tr>
+            <td className="fw-bold">Lat:</td>
+            <td>{latitude?.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td className="fw-bold">Lng:</td>
+            <td>{longitude?.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td className="fw-bold">Tilt:</td>
+            <td>{tilt?.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td className="fw-bold">Heading:</td>
+            <td>{heading?.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td className="fw-bold">Altitude:</td>
+            <td>{altitude?.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td className="fw-bold">Range:</td>
+            <td>{range?.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td className="fw-bold">Roll:</td>
+            <td>{roll?.toFixed(2)}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div id="description" className="d-flex flex-column mx-3 mt-3">
+      <div className="mb-3">
+        <span className="title">{currentLandmark.title}  </span>
+        <span className="address">- {currentLandmark.address}</span>
       </div>
-  
-      <div id="bio" className="d-flex flex-column">
-        <img className="info-image" src={`images/${currentLandmark.image_url}`}></img>
-        <div className="d-flex justify-content-center gap-3 mt-2">
-          <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['default']}><BsLink45Deg size={26} /></a>
-          <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['wikipedia']}><BsWikipedia size={26} /></a>
-          <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['youtube']}><BsYoutube size={26} /></a>
-        </div>
+      <p>
+        {currentLandmark.description}
+      </p>
+    </div>
+
+    <div id="bio" className="d-flex flex-column">
+      <img className="info-image" src={`images/${currentLandmark.image_url}`}></img>
+      <div className="d-flex justify-content-center gap-3 mt-2">
+        <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['default']}><BsLink45Deg size={26} /></a>
+        <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['wikipedia']}><BsWikipedia size={26} /></a>
+        <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['youtube']}><BsYoutube size={26} /></a>
       </div>
-    </div>)
-  }
-  
+    </div>
+  </div>)
+}
+
+

@@ -26,3 +26,12 @@
 #bio a {
     color: var(--sidebar-color-text);
 }
+
+#stats{
+    color: white;
+    border-right: 1px rgba(255, 255, 255, 0.191) solid;
+}
+
+#stats td{
+    padding-right: 1em;
+}
