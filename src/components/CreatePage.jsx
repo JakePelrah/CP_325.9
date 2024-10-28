@@ -191,10 +191,6 @@ export default function Create() {
 
                     <div class="col">
                         <div class="">
-                            <label for="floatingPassword">Default URL</label>
-                            <input type="text" className="form-control" />
-                        </div>
-                        <div class="">
                             <label for="floatingPassword">Wiki URL</label>
                             <input type="text" className="form-control" />
                         </div>

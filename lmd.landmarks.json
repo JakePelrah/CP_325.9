@@ -24,11 +24,9 @@
   "created": "2024-10-24T12:34:56-04:00",
   "websites": {
     "wikipedia": "https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre",
-    "default": "https://www.redrocksonline.com/",
     "youtube": "https://www.youtube.com/channel/UCK36AQt-u4CLisfkFtkIxYw"
   },
   "image_url": "red_rocks.png",
-  "address": "18300 W Alameda Pkwy, Morrison, CO 80465"
 },
 {
   "_id": {
@@ -57,11 +55,9 @@
   "created": "2024-10-24T12:34:56-04:00",
   "websites": {
     "wikipedia": "https://en.wikipedia.org/wiki/Abbey_Road_Studios",
-    "default": "https://www.abbeyroad.com/",
     "youtube": "https://www.youtube.com/@abbeyroad"
   },
   "image_url": "abbey_road_studios.png",
-  "address": "3 Abbey Rd., London NW8 9AY, UK"
 },
 {
   "_id": {
@@ -90,9 +86,7 @@
   "created": "2024-10-24T12:34:56-04:00",
   "websites": {
     "wikipedia": "https://en.wikipedia.org/wiki/Madison_Square_Garden",
-    "default": "https://www.msg.com/madison-square-garden",
     "youtube": "https://www.youtube.com/c/madisonsquaregarden"
   },
   "image_url": "madison_square_garden.png",
-  "address": "New York, NY 10001"
 }]
