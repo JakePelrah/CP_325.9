@@ -21,7 +21,7 @@ export default function Navbar() {
                             </button>
                             <ul class="dropdown-menu">
                                 <Link className="dropdown-item" to='create'>Create</Link>
-                                <Link className="dropdown-item" to='profile'>Profile</Link>
+                                <Link className="dropdown-item" to='myLandmarks'>My Landmarks</Link>
                                 <li><a class="dropdown-item" onClick={logout} >Logout</a></li>
                             </ul>
                         </div>

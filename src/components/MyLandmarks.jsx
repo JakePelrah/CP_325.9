@@ -1,25 +1,24 @@
 import { useUser } from "../providers/UserProvider"
 import { FaRegEdit, FaTrash } from "react-icons/fa";
-import './profile.css'
-export default function Profile() {
+import './myLandmarks.css'
+
+export default function MyLandmarks() {
     const { isLoggedIn, userLandmarks } = useUser()
 
     const renderedLandmarks = userLandmarks.map(lm =>
         <tr>
             <td>{lm.title}</td>
             <td>{lm.category}</td>
-            <td><img className="lm-profile-img" src={`images/${lm.image_url}`}></img></td>
+            <td><img className="lm-my-landmark-img" src={`images/${lm.image_url}`}></img></td>
             <td>
-                <button className="btn profile-btn me-2"><FaRegEdit size={28} /></button>
-                <button className="btn profile-btn"><FaTrash size={28} /></button>
+                <button className="btn my-landmark-btn me-2"><FaRegEdit size={28} /></button>
+                <button className="btn my-landmark-btn"><FaTrash size={28} /></button>
             </td>
         </tr>
     )
-    return (<div id="profile">
-        {/* {isLoggedIn?.displayName}
-            {isLoggedIn?._json?.picture} */}
-
-        <table class="table">
+    return (<div id="my-landmark">
+      
+        <table class="table mt-5">
             <thead>
                 <tr>
                     <th scope="col">Title</th>

@@ -1,8 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import MapPage from './components/MapPage.jsx'
-import Profile from './components/Profile.jsx';
+import MyLandmarks from './components/MyLandmarks.jsx';
 import Create from './components/CreatePage.jsx';
-
 import ErrorPage from './components/ErrorPage.jsx';
 import {
   createBrowserRouter,
@@ -12,6 +11,7 @@ import './index.css'
 import MapProvider from './providers/MapProvider.jsx';
 import UserProvider from './providers/UserProvider.jsx';
 import Navbar from './components/Navbar.jsx';
+import MyLandmarks from './components/MyLandmarks.jsx';
 
 
 const router = createBrowserRouter([
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
         element: <Create />
       },
       {
-        path: "profile",
-        element: <Profile />
+        path: "myLandmarks",
+        element: <MyLandmarks />
       },
     ]
   }

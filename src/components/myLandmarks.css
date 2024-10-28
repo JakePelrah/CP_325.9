@@ -2,21 +2,15 @@
     color: aliceblue;
 }
 
+
 .lm-profile-img{
     width: 5em;
     height: 5em;
 }
 
-.table-description{
-    height: 2em;
-    overflow-y: scroll;
-}
-
 .profile-btn{
     background-color: var( --sidebar-color-text);
 }
-
-
 
 td{
     align-content: center;

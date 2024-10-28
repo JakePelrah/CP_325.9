@@ -8,13 +8,13 @@ nav{
     background-color: var(--sidebar-color);
 }
 
-#profile-image{
+#my-landmark-image{
     clip-path: circle();
     height: 2em;
     width: 2em;
 }
 
-#profile-toggle{
+#my-landmark-toggle{
     background-color: transparent !important;
     border: none;
 }
