@@ -1,5 +1,5 @@
 import express from "express";
-import { getLandmarks } from "../../db/index.js";
+import { getLandmarks } from "../db/index.js";
 
 // Create an Express router for authentication
 export const landmarkRouter = express.Router();

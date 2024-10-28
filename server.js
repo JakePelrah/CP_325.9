@@ -8,9 +8,9 @@ import cookieParser from 'cookie-parser';
 import MongoStore from 'connect-mongo';
 
 // Import routes
-import { authRouter } from './src/routes/auth.js';
-import { landmarkRouter } from './src/routes/landmarks.js';
-import { userRouter } from './src/routes/user.js';
+import { authRouter } from './backend/routes/auth.js';
+import { landmarkRouter } from './backend/routes/landmarks.js';
+import { userRouter } from './backend/routes/user.js';
 
 
 // Get the directory name of the current module

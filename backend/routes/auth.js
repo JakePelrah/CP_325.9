@@ -10,7 +10,7 @@
 import express from "express";
 import passport from "passport";
 import GoogleStrategy from "passport-google-oauth20";
-import { findOrCreateUser } from "../../db/index.js";
+import { findOrCreateUser } from "../db/index.js";
 
 // Configure the Google strategy for use by Passport.
 passport.use(
@@ -84,8 +84,8 @@ authRouter.get(
 authRouter.get(
   "/oauth2/redirect/google",
   passport.authenticate("google", {
-    successReturnToOrRedirect: "/", // Redirect to profile on success
-    failureRedirect: "/", // Redirect to failure page on error
+    successReturnToOrRedirect: "/map", // Redirect to profile on success
+    failureRedirect: "/map", // Redirect to failure page on error
   })
 );
 
