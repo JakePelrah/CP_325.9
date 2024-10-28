@@ -26,7 +26,7 @@
     "wikipedia": "https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre",
     "youtube": "https://www.youtube.com/channel/UCK36AQt-u4CLisfkFtkIxYw"
   },
-  "image_url": "red_rocks.png",
+  "image_url": "red_rocks.png"
 },
 {
   "_id": {
@@ -57,7 +57,7 @@
     "wikipedia": "https://en.wikipedia.org/wiki/Abbey_Road_Studios",
     "youtube": "https://www.youtube.com/@abbeyroad"
   },
-  "image_url": "abbey_road_studios.png",
+  "image_url": "abbey_road_studios.png"
 },
 {
   "_id": {
@@ -88,5 +88,5 @@
     "wikipedia": "https://en.wikipedia.org/wiki/Madison_Square_Garden",
     "youtube": "https://www.youtube.com/c/madisonsquaregarden"
   },
-  "image_url": "madison_square_garden.png",
+  "image_url": "madison_square_garden.png"
 }]

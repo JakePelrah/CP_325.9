@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client'
 import MapProvider from './providers/MapProvider.jsx';
 import UserProvider from './providers/UserProvider.jsx';
 // components
+
 import Navbar from './components/Navbar.jsx';
+import Home from './components/Home.jsx';
 import MapPage from './components/MapPage.jsx'
 import MyLandmarks from './components/MyLandmarks.jsx';
-import Create from './components/CreatePage.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 // react router
 import {
@@ -24,11 +25,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <MapPage />,
+        element: <Home />,
       },
       {
-        path: "create",
-        element: <Create />
+        path: "/map",
+        element: <MapPage />,
       },
       {
         path: "myLandmarks",

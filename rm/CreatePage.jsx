@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react"
-import { useMap } from "../providers/MapProvider"
+import { useMap } from "../src/providers/MapProvider"
 import "./createPage.css"
 
 export default function Create() {
@@ -17,13 +17,14 @@ export default function Create() {
     const [longitude, setLongitude] = useState(0)
     const [landMarkTitle, setlandMarkTitle] = useState('')
     const [landMarkDescription, setlandMarkDescription] = useState('')
-    const [markerLabel, setMarkerLabel] = useState('')
+
 
     useEffect(() => {
         initMap()
         initPlaces()
     }, [])
 
+    
     function initMap() {
         loader.importLibrary('maps3d')
             .then(async ({ Map3DElement, Marker3DElement }) => {
@@ -77,7 +78,6 @@ export default function Create() {
                         position: { lat: event.position.lat, lng: event.position.lng, altitude: altitude + 50 },
                         altitudeMode: 'RELATIVE_TO_GROUND',
                         extruded: true,
-                        label: 'NEW'
                     });
                     // add marker to map
                     mapRef.current.append(markerRef.current)
@@ -126,7 +126,12 @@ export default function Create() {
     };
 
 
-    function submit() {
+
+    function submit(e) {
+        e.preventDefault()
+
+        console.log(landMarkDescription, landMarkTitle, markerRef.current)
+        markerRef.current.label = landMarkTitle
 
     }
 
@@ -182,7 +187,7 @@ export default function Create() {
                             value={landMarkDescription} onChange={(e) => setlandMarkDescription(e.target.value)}
                             style={{ 'height': '6.2em' }}
                             class="form-control"></textarea>
-                        
+
                         <div class="mt-4">
                             <label for="image-upload" className="custom-file-upload">Choose landmark image:</label>
                             <input id="image-upload" type="file" accept="image/png, image/jpeg" />
@@ -190,6 +195,7 @@ export default function Create() {
                     </div>
 
                     <div class="col">
+
                         <div class="">
                             <label for="floatingPassword">Wiki URL</label>
                             <input type="text" className="form-control" />
@@ -203,7 +209,7 @@ export default function Create() {
                 </div>
 
                 <div className="mt-3">
-                    <button className="btn submit-btn mt-2" onSubmit={submit}>Create Landmark</button>
+                    <button className="btn submit-btn mt-2" onClick={submit}>Create Landmark</button>
                 </div>
 
 
