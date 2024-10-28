@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useMap } from "../providers/MapProvider";
 import { GiMicrophone, GiMusicalNotes, GiTheaterCurtains } from "react-icons/gi";
 import { BsPersonCircle } from "react-icons/bs";
