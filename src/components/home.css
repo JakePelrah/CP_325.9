@@ -2,4 +2,5 @@
     width: 100vw;
     height: 92vh;
     pointer-events: none;
+    opacity: 0.5;
 }

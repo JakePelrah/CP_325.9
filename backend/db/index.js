@@ -29,66 +29,7 @@ let db = conn.db('lmd')
 }
     */
 
-////////////////////////////////////// GET //////////////////////////////////////
-export async function getLandmarks() {
-  const collection = db.collection('landmarks')
-  const results = collection.find({}).toArray()
-  return results
-}
-
-export async function getLandmarksByUserId(id) {
-  const collection = db.collection('landmarks')
-  const results = collection.find({}).toArray()
-  return results
-}
-
-export async function getUser(userId) {
-  // userId = parseInt(userId)
-  // const collection = db.collection('users')
-  // const results = collection.findOne({ userId })
-  // return results
-}
-
-export async function getFavorites(userId) {
-  // userId = parseInt(userId)
-  // const collection = db.collection('accounts')
-  // const results = await collection.find({ userId }).toArray()
-  // return results
-}
-
-
-
-////////////////////////////////////// POST //////////////////////////////////////
-export async function postLandmark() {
-  // const transaction = {
-  //   accountId: parseInt(accountId),
-  //   transactionId: uuidv4(),
-  //   amount: Decimal128.fromString(amount),
-  //   category,
-  //   type,
-  //   created: new Date(),
-  // };
-  // const collection = db.collection('transactions')
-  // const results = collection.insertOne(transaction)
-  // return results
-}
-
-export async function postFavorite() {
-  // const transaction = {
-  //   accountId: parseInt(accountId),
-  //   transactionId: uuidv4(),
-  //   amount: Decimal128.fromString(amount),
-  //   category,
-  //   type,
-  //   created: new Date(),
-  // };
-  // const collection = db.collection('transactions')
-  // const results = collection.insertOne(transaction)
-  // return results
-}
-
-
-
+////////////////////////////// CREATE //////////////////////////////////////
 export async function findOrCreateUser(profile) {
 
   // get users collection
@@ -104,6 +45,14 @@ export async function findOrCreateUser(profile) {
   }
   return user
 }
+
+////////////////////////////////////// READ //////////////////////////////////////
+export async function getLandmarks() {
+  const collection = db.collection('landmarks')
+  const results = collection.find({}).toArray()
+  return results
+}
+
 
 ////////////////////////////////////// UPDATE //////////////////////////////////////
 export async function patchLandmark(transactionId, record) {
@@ -125,12 +74,5 @@ export async function deleteLandmark(transactionId) {
   // const results = collection.deleteOne({ transactionId })
   // return results
 }
-
-export async function deleteFavorite(transactionId) {
-  // const collection = db.collection('transactions')
-  // const results = collection.deleteOne({ transactionId })
-  // return results
-}
-
 
 
