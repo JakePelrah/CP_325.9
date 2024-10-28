@@ -46,3 +46,8 @@ input[type="file"] {
   background-color: var(--sidebar-color);
   color: white;
 }
+
+textarea
+{
+    resize: none;
+}
