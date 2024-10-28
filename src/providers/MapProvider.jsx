@@ -35,13 +35,23 @@ export default function MapProvider({ children }) {
     }
 
 
+    function removeLandmark(id){
+        console.log(id)
+    }
+
+    function updateLandmark(id, update){
+        console.log(id, update)
+    }
+
     return (
         <MapContext.Provider value={{
             landmarks,
             landmarksByCategory,
             loader,
             setCurrentLandmark,
-            currentLandmark
+            currentLandmark,
+            removeLandmark,
+            updateLandmark
         }}>
             {children}
         </MapContext.Provider>
