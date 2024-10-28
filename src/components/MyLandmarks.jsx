@@ -78,21 +78,19 @@ function EditModal({ modalRef, currentLandmark, updateLandmark }) {
         setDefaultURL(currentLandmark?.websites.default)
         setWikiURL(currentLandmark?.websites.wikipedia)
         setYouTubeURL(currentLandmark?.websites.youtube)
-    },[currentLandmark])
+    }, [currentLandmark])
 
 
     function update(e) {
         e.preventDefault()
         if (landMarkTitle && landMarkDescription && defaultURL && wikiURL && youTubeURL) {
-            console.log(landMarkTitle, landMarkDescription, defaultURL, wikiURL, youTubeURL)
+            updateLandmark(currentLandmark._id, {landMarkTitle, landMarkDescription, defaultURL, wikiURL, youTubeURL})
             modalRef.current.hide()
         }
         else {
             alert('Fill out all fields')
         }
     }
-
-
 
     return (<div class="modal" ref={modalRef} tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -155,7 +153,7 @@ function EditModal({ modalRef, currentLandmark, updateLandmark }) {
 
 function DeleteModal({ modalRef, currentLandmark, removeLandmark }) {
 
-    function remove(e, id){
+    function remove(e, id) {
         e.preventDefault()
         removeLandmark(id)
         modalRef.current.hide()
