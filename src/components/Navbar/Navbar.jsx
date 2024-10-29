@@ -1,7 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
-import { BsPersonCircle } from "react-icons/bs";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useUser } from '../../providers/UserProvider';
-import { useLocation } from "react-router-dom";
+import { BsPersonCircle } from "react-icons/bs";
 import './navbar.css'
 
 export default function Navbar() {
@@ -33,10 +32,8 @@ export default function Navbar() {
                         }
                     </div>
                 }
-
             </nav>
             <Outlet />
         </>
     )
-
 }

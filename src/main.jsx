@@ -12,6 +12,7 @@ import CreatePage from './components/CreatePage/CreatePage.jsx';
 import MyLandmarks from './components/MyLandmarksPage/MyLandmarks.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+
 // react router
 import {
   createBrowserRouter,
@@ -47,8 +48,6 @@ const router = createBrowserRouter([
           },
         ]
       }
-      
-     
     ]
   }
 ]);
