@@ -5,11 +5,6 @@
   --bg-color:#292c4e92;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('../public/fonts/Roboto/Roboto-Regular.ttf') format("ttf");
-}
-
 body {
   margin: 0;
   padding: 0;
