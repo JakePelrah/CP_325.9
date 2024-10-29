@@ -2,6 +2,7 @@ import express from "express";
 import { getLandmarks } from "../db/index.js";
 import multer from 'multer';
 import path from 'path'
+import {v4 as uuidv4} from 'uuid'
 
 export const landmarkRouter = express.Router();
 
@@ -14,10 +15,9 @@ const storage = multer.diskStorage({
    filename: function (req, file, cb) {
       const originalName = path.parse(file.originalname).name; // Get the original file name without extension
       const extension = path.extname(file.originalname); // Get the file extension
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9); // Create a unique suffix
 
       // Combine original name, unique suffix, and extension
-      const newFileName = `${originalName}-${uniqueSuffix}${extension}`;
+      const newFileName = `${originalName}-${uuidv4()}${extension}`;
       cb(null, newFileName); // Use the new filename
    },
 })
@@ -57,6 +57,10 @@ landmarkRouter.get('/getLandmarks', (req, res) => {
 
 
 landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
+  console.log(req.file.filename)
+
+  //create landmark
+  
    const {
       landMarkTitle,
       landMarkAddress,
@@ -72,5 +76,4 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
       wikiURL,
       youTubeURL
    } = req.body;
-   console.log(landMarkTitle)
 })
