@@ -35,8 +35,8 @@ export default function CreatePage() {
             }
             const { lat, lng, altitude } = clickPosition
             markerRef.current.label = landMarkTitle || 'Landmark Title'
-          
-            markerRef.current.position = { lat, lng, altitude:parseFloat(markerAltitude) }
+
+            markerRef.current.position = { lat, lng, altitude: parseFloat(markerAltitude) }
             mapRef.current.append(markerRef.current)
         }
     }, [clickPosition, markerAltitude])
@@ -134,7 +134,7 @@ export default function CreatePage() {
     }
 
     // zoom to location
-   async function zoomToViewport(geometry) {
+    async function zoomToViewport(geometry) {
         if (mapRef.current) {
             let elevation = await getElevationforPoint(geometry.location);
             setMarkerAltitude(elevation)
@@ -150,15 +150,15 @@ export default function CreatePage() {
         // Get place elevation using the ElevationService.
         const elevatorService = new google.maps.ElevationService();
         const elevationResponse = await elevatorService.getElevationForLocations({
-          locations: [location],
+            locations: [location],
         });
         if (!(elevationResponse.results && elevationResponse.results.length)) {
-          window.alert(`Insufficient elevation data for place: ${place.name}`);
-          return;
+            window.alert(`Insufficient elevation data for place: ${place.name}`);
+            return;
         }
         const elevation = elevationResponse.results[0].elevation || 10;
         return elevation;
-      }
+    }
 
     function submit() {
 
@@ -192,7 +192,7 @@ export default function CreatePage() {
                         <td>{tilt?.toFixed(2)}</td>
                         <td>{heading?.toFixed(2)}</td>
                         <td>{range?.toFixed(2)}</td>
-                        <td><input value={markerAltitude} onChange={(e)=>setMarkerAltitude(e.target.value)} type="number"></input></td>
+                        <td><input value={markerAltitude} onChange={(e) => setMarkerAltitude(e.target.value)} type="number"></input></td>
                     </tr>
 
                 </tbody>
@@ -226,14 +226,14 @@ export default function CreatePage() {
                 <div className="d-flex flex-column flex-fill gap-1">
 
 
-                <select class="form-select mt-4" aria-label="Default select example">
+                    <select class="form-select mt-4" aria-label="Default select example">
                         <option selected>Select category</option>
                         <option value="artist">Artist</option>
                         <option value="genre">Genre</option>
                         <option value="studio">Studio</option>
                         <option value="venue">Venue</option>
-
                     </select>
+
                     <div>
                         <label for="floatingPassword">Default URL</label>
                         <input type="text" className="form-control" />

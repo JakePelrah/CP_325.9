@@ -123,16 +123,11 @@ export default function MapPage() {
   return (
     <div className='d-flex flex-column'>
 
-
       <div ref={mapElemRef} id="map"></div>
+
       <MapNav />
-      <Info currentLandmark={currentLandmark} tilt={tilt}
-        heading={heading}
-        range={range}
-        roll={roll}
-        altitude={altitude}
-        latitude={latitude}
-        longitude={longitude} />
+
+      <Info currentLandmark={currentLandmark} />
 
     </div>
   )
