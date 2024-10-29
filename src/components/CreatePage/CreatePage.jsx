@@ -183,9 +183,9 @@ export default function CreatePage() {
                 <tbody>
                     <tr>
                         <td> <input className="form-control" ref={searchRef} type="text"></input></td>
-                        <td>{landmarkState.altitude?.toFixed(2)}</td>
-                        <td>{landmarkState.latitude?.toFixed(2)}</td>
-                        <td>{landmarkState.longitude?.toFixed(2)}</td>
+                        <td>{landmarkState.center.altitude?.toFixed(2)}</td>
+                        <td>{landmarkState.center.lat?.toFixed(2)}</td>
+                        <td>{landmarkState.center.lng?.toFixed(2)}</td>
                         <td>{landmarkState.tilt?.toFixed(2)}</td>
                         <td>{landmarkState.heading?.toFixed(2)}</td>
                         <td>{landmarkState.range?.toFixed(2)}</td>

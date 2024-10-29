@@ -27,22 +27,16 @@ export const landmarkReducer = (state, action) => {
             return { ...state, landMarkAddress: action.payload };
         case "SET_LANDMARK_DESCRIPTION":
             return { ...state, landMarkDescription: action.payload };
-        case "SET_ALTITUDE":
-            return { ...state, altitude: action.payload };
-        case "SET_LATITUDE":
-            return { ...state, latitude: action.payload };
-        case "SET_LONGITUDE":
-            return { ...state, longitude: action.payload };
-        case "SET_TILT":
+        case "SET_LANDMARK_CENTER":
+            return { ...state, center: action.payload };
+        case "SET_LANDMARK_TILT":
             return { ...state, tilt: action.payload };
-        case "SET_HEADING":
+        case "SET_LANDMARK_HEADING":
             return { ...state, heading: action.payload };
-        case "SET_RANGE":
+        case "SET_LANDMARK_RANGE":
             return { ...state, range: action.payload };
         case "SET_MARKER_ALTITUDE":
             return { ...state, markerAltitude: action.payload };
-        case "SET_LANDMARK_CENTER":
-            return { ...state, center: action.payload };
         case "SET_MARKER_POSITION":
             return { ...state, markerPosition: action.payload };
         default:

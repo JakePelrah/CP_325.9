@@ -22,3 +22,8 @@ html{
 .vAygCK-api-load-alpha-banner {
   visibility: hidden;
 }
+
+/* tables use fixed layout */
+table {
+  table-layout: fixed;
+}

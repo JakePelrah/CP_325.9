@@ -1,49 +1,48 @@
 #create-map gmp-map-3d {
-    width: 100vw;
-    height: 40vh;
+  width: 100vw;
+  height: 40vh;
 }
 
-  #title {
-    color: #fff;
-    background-color: #4d90fe;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 6px 12px;
-  }
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
 
-th, td, tr{
+#create-table th,
+#create-table td,
+#create-table tr {
   background-color: var(--sidebar-color) !important;
   border-color: var(--scrollbar-thumb) !important;
   color: white !important;
 }
 
-table{
-  table-layout: fixed;
-}
 
-#create-form{
+#create-form {
   overflow: hidden;
 }
 
-label{
+label {
   color: white;
 }
 
-#landmark-image{
+#landmark-image {
   color: white;
 }
 
 input[type="file"] {
-    display: none;
-  }
-  
-  .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-  }
+  display: none;
+}
 
-  #create-btn{
-    background-color: var(--scrollbar-thumb);
-  }
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#create-btn {
+  background-color: var(--scrollbar-thumb);
+}
