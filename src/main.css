@@ -22,3 +22,19 @@ body {
 table {
   table-layout: fixed;
 }
+
+td {
+  align-content: center;
+}
+
+textarea{
+  resize: none;
+  border: 1px solid var(--main-color) !important;
+  /* border-radius: 0 !important;  */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-close {
+  filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(259deg) brightness(104%) contrast(101%);
+}

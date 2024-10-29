@@ -7,10 +7,10 @@ import './myLandmarks.css'
 
 export default function MyLandmarks() {
     const { landmarks, removeLandmark, updateLandmark } = useMap()
+    const [currentLandmark, setCurrentLandmark] = useState(null)
     const editModalRef = useRef(null)
     const deleteModalRef = useRef(null)
-    const [currentLandmark, setCurrentLandmark] = useState(null)
-
+   
     // initialize modals
     useEffect(() => {
         editModalRef.current = new bootstrap.Modal(editModalRef.current)

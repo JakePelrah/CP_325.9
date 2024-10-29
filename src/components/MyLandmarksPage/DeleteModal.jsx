@@ -1,5 +1,3 @@
-
-
 export default function DeleteModal({ modalRef, currentLandmark, removeLandmark }) {
 
     function remove(e, id) {
