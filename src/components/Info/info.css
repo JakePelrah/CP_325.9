@@ -1,17 +1,17 @@
 #info {
     background-color: var(--sidebar-color);
+    color: var(--main-color-text);
     border-radius: .2em;
     height: 34.3vh;
 }
 #info img {
     height: 10em;
     width: 10em;
-    object-fit: cover;
     margin: 1em;
+    object-fit: cover;
 }
 
 #description {
-    color: var(--main-color-text);
     overflow-y: scroll;
     scrollbar-color: var(--scrollbar-thumb) var(--sidebar-color);
 }
@@ -27,13 +27,4 @@
     color: var(--main-color-text);
 }
 
-#stats{
-    color: white;
-    border-right: 1px rgba(255, 255, 255, 0.191) solid;
-    min-width: 10em;
-}
-
-#stats table{
-    table-layout: fixed;
-}
 

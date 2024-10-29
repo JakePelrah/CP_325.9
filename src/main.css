@@ -10,7 +10,8 @@ html{
 
 body {
   min-height: 100vh;
-  background-color: var(--main-color); 
+  background-color: var(--main-color);
+  overflow: hidden;
 
 }
 /* hide the development banner */

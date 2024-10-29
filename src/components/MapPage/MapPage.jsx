@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMap } from '../../providers/MapProvider';
 import MapNav from '../MapNav/MapNav'
 import Info from "../Info/Info";
@@ -49,10 +49,8 @@ export default function MapPage() {
 
         mapRef?.current?.append(markerRef.current)
         mapElemRef?.current?.append(mapRef.current)
-        console.log('Initializing map.')
       })
   }
-
 
   function updateMap() {
     mapRef?.current?.flyCameraTo({
@@ -70,7 +68,6 @@ export default function MapPage() {
     });
   }
 
-  // update marker
   function updateMarker() {
     markerRef.current.position = {
       lat: currentLandmark.coords.marker.latitude,
