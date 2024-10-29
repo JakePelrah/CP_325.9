@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useMap } from "../providers/MapProvider";
+import { useMap } from "../../providers/MapProvider";
 import { GiMicrophone, GiMusicalNotes, GiTheaterCurtains } from "react-icons/gi";
 import { BsPersonCircle } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid'

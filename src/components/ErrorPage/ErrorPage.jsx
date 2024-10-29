@@ -3,8 +3,6 @@ import "./errorPage.css"
 
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
-
   return (
     <div id="container">
       <div id="error-text">

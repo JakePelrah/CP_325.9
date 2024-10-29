@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useMap } from "../providers/MapProvider";
+import { useMap } from "../../providers/MapProvider";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
 import './myLandmarks.css'
 

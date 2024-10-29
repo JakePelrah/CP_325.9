@@ -4,18 +4,17 @@ import MapProvider from './providers/MapProvider.jsx';
 import UserProvider from './providers/UserProvider.jsx';
 // components
 
-import Navbar from './components/Navbar.jsx';
-import Home from './components/Home.jsx';
-import MapPage from './components/MapPage.jsx'
-import CreatePage from './components/CreatePage.jsx';
-import MyLandmarks from './components/MyLandmarks.jsx';
-import ErrorPage from './components/ErrorPage.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Home from './components/HomePage/Home.jsx';
+import MapPage from './components/MapPage/MapPage.jsx'
+import CreatePage from './components/CreatePage/CreatePage.jsx';
+import MyLandmarks from './components/MyLandmarksPage/MyLandmarks.jsx';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 // react router
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
 import './main.css'
 
 const router = createBrowserRouter([

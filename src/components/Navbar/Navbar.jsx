@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
-import { useUser } from '../providers/UserProvider';
+import { useUser } from '../../providers/UserProvider';
 import { useLocation } from "react-router-dom";
 import './navbar.css'
 

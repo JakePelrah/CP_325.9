@@ -58,22 +58,5 @@ landmarkRouter.get('/getLandmarks', (req, res) => {
 
 landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
   console.log(req.file.filename)
-
-  //create landmark
-  
-   const {
-      landMarkTitle,
-      landMarkAddress,
-      landMarkDescription,
-      altitude,
-      latitude,
-      longitude,
-      tilt,
-      heading,
-      range,
-      markerAltitude,
-      defaultURL,
-      wikiURL,
-      youTubeURL
-   } = req.body;
+  console.log(req.body)
 })

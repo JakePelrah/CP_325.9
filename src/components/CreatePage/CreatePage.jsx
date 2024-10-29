@@ -1,6 +1,7 @@
-import { useEffect, useState, useRef } from "react"
-import { useMap } from "../providers/MapProvider"
+import { useEffect, useState, useReducer, useRef } from "react"
+import { useMap } from "../../providers/MapProvider"
 import "./createPage.css"
+import { urlReducer, initialURLState, landmarkReducer, initialLandmarkState } from "./createReducers"
 
 export default function CreatePage() {
     const { loader, currentLandmark } = useMap()
@@ -8,23 +9,9 @@ export default function CreatePage() {
     const mapRef = useRef(null)
     const mapElemRef = useRef(null)
     const markerRef = useRef(null)
-    const [tilt, setTilt] = useState(0)
-    const [heading, setHeading] = useState(0)
-    const [range, setRange] = useState(0)
-    const [altitude, setAltitude] = useState(0)
-    const [latitude, setLatitude] = useState(0)
-    const [longitude, setLongitude] = useState(0)
-    const [landMarkTitle, setlandMarkTitle] = useState('')
-    const [landMarkDescription, setlandMarkDescription] = useState('')
-    const [clickPosition, setClickPosition] = useState(null)
-    const [landMarkAddress, setlandMarkAddress] = useState(null)
-    const [markerAltitude, setMarkerAltitude] = useState(0)
     const [imageFile, setImageFile] = useState(null)
-    const [ defaultURL, setDefaultURL] = useState('https://')
-    const [ youTubeURL, setYouTubeURL] = useState('https://')
-    const [ wikiURL, setWikiURL] = useState('https://')
-
-
+    const [urlState, dispatchURL] = useReducer(urlReducer, initialURLState);
+    const [landmarkState, dispatchLandmark] = useReducer(landmarkReducer, initialLandmarkState);
 
     useEffect(() => {
         initMap()
@@ -34,24 +21,25 @@ export default function CreatePage() {
 
     useEffect(() => {
 
-        if (clickPosition) {
+        if (landmarkState.markerPosition) {
             if (markerRef.current) {
                 markerRef.current.remove()
             }
-            const { lat, lng, altitude } = clickPosition
-            markerRef.current.label = landMarkTitle || 'Landmark Title'
 
-            markerRef.current.position = { lat, lng, altitude: parseFloat(markerAltitude) }
+            const { lat, lng } = landmarkState.markerPosition
+            markerRef.current.label = landmarkState.landMarkTitle || 'Landmark Title'
+            markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) }
+            console.log(lat, lng, landmarkState.markerAltitude, markerRef.current)
             mapRef.current.append(markerRef.current)
         }
-    }, [clickPosition, markerAltitude])
+    }, [landmarkState.markerPosition, landmarkState.markerAltitude])
 
 
     useEffect(() => {
         if (markerRef.current) {
-            markerRef.current.label = landMarkTitle || 'Landmark Title'
+            markerRef.current.label = landmarkState.landMarkTitle || 'Landmark Title'
         }
-    }, [landMarkTitle])
+    }, [landmarkState.landMarkTitle])
 
     function initMap() {
         loader.importLibrary('maps3d')
@@ -71,26 +59,25 @@ export default function CreatePage() {
 
 
                 mapRef.current.addEventListener("gmp-centerchange", () => {
-                    const { altitude, lat, lng } = mapRef.current.center
-                    setAltitude(altitude)
-                    setLatitude(lat)
-                    setLongitude(lng)
+                    dispatchLandmark({ type: "SET_LANDMARK_CENTER", payload: mapRef.current.center })
                 });
 
                 mapRef.current.addEventListener("gmp-headingchange", () => {
-                    setHeading(mapRef.current.heading)
+                    dispatchLandmark({ type: "SET_LANDMARK_HEADING", payload: mapRef.current.heading })
                 });
 
                 mapRef.current.addEventListener("gmp-rangechange", () => {
-                    setRange(mapRef.current.range)
+                    dispatchLandmark({ type: "SET_LANDMARK_RANGE", payload: mapRef.current.range })
                 });
 
                 mapRef.current.addEventListener("gmp-tiltchange", () => {
-                    setTilt(mapRef.current.tilt)
+                    dispatchLandmark({ type: "SET_LANDMARK_TILT", payload: mapRef.current.tilt })
                 });
 
-                // on map click
-                mapRef.current.addEventListener('gmp-click', (event) => setClickPosition(event.position));
+                mapRef.current.addEventListener('gmp-click', (event) => {
+                    const { lat, lng, altitude } = event.position
+                    dispatchLandmark({ type: "SET_MARKER_POSITION", payload: { lat, lng, altitude } })
+                });
 
                 // add map
                 mapElemRef?.current?.append(mapRef.current)
@@ -138,7 +125,7 @@ export default function CreatePage() {
     async function zoomToViewport(geometry) {
         if (mapRef.current) {
             let elevation = await getElevationforPoint(geometry.location);
-            setMarkerAltitude(elevation)
+            dispatchLandmark({ type: "SET_MARKER_ALTITUDE", payload: elevation })
             mapRef.current.center = { lat: geometry.location.lat(), lng: geometry.location.lng(), altitude: elevation + 50 };
             mapRef.current.heading = 0;
             mapRef.current.range = 1000;
@@ -163,33 +150,14 @@ export default function CreatePage() {
 
     function submit(e) {
         e.preventDefault()
-        const obj = {
-            landMarkTitle, landMarkAddress, landMarkDescription, altitude, latitude, longitude,
-            tilt, heading, range, markerAltitude,
-        }
-        alert(JSON.stringify(obj))
-
         const formData = new FormData()
         formData.append('file', imageFile)
-        formData.append('landMarkTitle', landMarkTitle);
-        formData.append('landMarkAddress', landMarkAddress);
-        formData.append('landMarkDescription', landMarkDescription);
-        formData.append('altitude', altitude);
-        formData.append('latitude', latitude);
-        formData.append('longitude', longitude);
-        formData.append('tilt', tilt);
-        formData.append('heading', heading);
-        formData.append('range', range);
-        formData.append('markerAltitude', markerAltitude);
-        formData.append('defaultURL', defaultURL);
-        formData.append('wikiURL', wikiURL);
-        formData.append('youTubeURL', youTubeURL);
+        formData.append('landmarkState', JSON.stringify(landmarkState))
+        formData.append('urlState', JSON.stringify(urlState))
 
-
-        console.log(formData)
         fetch('/createLandmark', {
             method: 'POST',
-            body:formData
+            body: formData
         })
     }
 
@@ -215,13 +183,16 @@ export default function CreatePage() {
                 <tbody>
                     <tr>
                         <td> <input className="form-control" ref={searchRef} type="text"></input></td>
-                        <td>{altitude?.toFixed(2)}</td>
-                        <td>{latitude?.toFixed(2)}</td>
-                        <td>{longitude?.toFixed(2)}</td>
-                        <td>{tilt?.toFixed(2)}</td>
-                        <td>{heading?.toFixed(2)}</td>
-                        <td>{range?.toFixed(2)}</td>
-                        <td><input value={markerAltitude} onChange={(e) => setMarkerAltitude(e.target.value)} type="number"></input></td>
+                        <td>{landmarkState.altitude?.toFixed(2)}</td>
+                        <td>{landmarkState.latitude?.toFixed(2)}</td>
+                        <td>{landmarkState.longitude?.toFixed(2)}</td>
+                        <td>{landmarkState.tilt?.toFixed(2)}</td>
+                        <td>{landmarkState.heading?.toFixed(2)}</td>
+                        <td>{landmarkState.range?.toFixed(2)}</td>
+                        <td><input
+                            value={landmarkState.markerAltitude}
+                            onChange={(e) => dispatchLandmark({ type: "SET_MARKER_ALTITUDE", payload: e.target.value })}
+                            type="number"></input></td>
                     </tr>
 
                 </tbody>
@@ -234,20 +205,27 @@ export default function CreatePage() {
 
                     <div>
                         <label for="floatingInput">Landmark Title</label>
-                        <input value={landMarkTitle} onChange={(e) => setlandMarkTitle(e.target.value)} type="text"
+                        <input
+                            value={landmarkState.landMarkTitle}
+                            onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_TITLE", payload: e.target.value })}
+                            type="text"
                             className="form-control" required />
                     </div>
 
                     <div>
                         <label for="floatingInput">Landmark Address</label>
-                        <input value={landMarkAddress} onChange={(e) => setlandMarkAddress(e.target.value)} type="text"
+                        <input
+                            value={landmarkState.landMarkAddress}
+                            onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_ADDRESS", payload: e.target.value })}
+                            type="text"
                             className="form-control" required />
                     </div>
 
                     <div>
                         <label for="floatingTextarea">Landmark Description</label>
                         <textarea
-                            value={landMarkDescription} onChange={(e) => setlandMarkDescription(e.target.value)}
+                            value={landmarkState.landMarkDescription}
+                            onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_DESCRIPTION", payload: e.target.value })}
                             style={{ 'height': '6em' }}
                             class="form-control" required></textarea>
                     </div>
@@ -267,17 +245,17 @@ export default function CreatePage() {
 
                     <div>
                         <label for="floatingPassword">Default URL</label>
-                        <input value={defaultURL} onChange={(e)=>setDefaultURL(e.target.value)}  type="text" className="form-control" />
+                        <input value={urlState.defaultURL} onChange={(e) => dispatchURL({ type: "SET_DEFAULT_URL", payload: e.target.value })} type="text" className="form-control" />
                     </div>
 
                     <div>
                         <label for="floatingPassword">Wiki URL</label>
-                        <input value={wikiURL} onChange={(e)=>setWikieURL(e.target.value)}  type="text" className="form-control" />
+                        <input value={urlState.wikiURL} onChange={(e) => dispatchURL({ type: "SET_WIKI_URL", payload: e.target.value })} type="text" className="form-control" />
                     </div>
 
                     <div>
                         <label for="floatingPassword">YouTube URL</label>
-                        <input value={youTubeURL} onChange={(e)=>setYouTubeURL(e.target.value)} type="text" className="form-control" />
+                        <input value={urlState.youTubeURL} onChange={(e) => dispatchURL({ type: "SET_YOUTUBE_URL", payload: e.target.value })} type="text" className="form-control" />
                     </div>
 
                 </div>

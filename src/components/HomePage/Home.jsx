@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { useMap } from "../providers/MapProvider"
+import { useMap } from "../../providers/MapProvider"
 import './home.css'
 
 export default function Home() {

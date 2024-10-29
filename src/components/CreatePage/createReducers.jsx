@@ -1,0 +1,62 @@
+export const urlReducer = (state, action) => {
+    switch (action.type) {
+        case "SET_DEFAULT_URL":
+            return { ...state, defaultURL: action.payload };
+        case "SET_YOUTUBE_URL":
+            return { ...state, youTubeURL: action.payload };
+        case "SET_WIKI_URL":
+            return { ...state, wikiURL: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const initialURLState = {
+    defaultURL: 'https://',
+    youTubeURL: 'https://',
+    wikiURL: 'https://',
+};
+
+
+
+export const landmarkReducer = (state, action) => {
+    switch (action.type) {
+        case "SET_LANDMARK_TITLE":
+            return { ...state, landMarkTitle: action.payload };
+        case "SET_LANDMARK_ADDRESS":
+            return { ...state, landMarkAddress: action.payload };
+        case "SET_LANDMARK_DESCRIPTION":
+            return { ...state, landMarkDescription: action.payload };
+        case "SET_ALTITUDE":
+            return { ...state, altitude: action.payload };
+        case "SET_LATITUDE":
+            return { ...state, latitude: action.payload };
+        case "SET_LONGITUDE":
+            return { ...state, longitude: action.payload };
+        case "SET_TILT":
+            return { ...state, tilt: action.payload };
+        case "SET_HEADING":
+            return { ...state, heading: action.payload };
+        case "SET_RANGE":
+            return { ...state, range: action.payload };
+        case "SET_MARKER_ALTITUDE":
+            return { ...state, markerAltitude: action.payload };
+        case "SET_LANDMARK_CENTER":
+            return { ...state, center: action.payload };
+        case "SET_MARKER_POSITION":
+            return { ...state, markerPosition: action.payload };
+        default:
+            return state;
+    }
+};
+export const initialLandmarkState = {
+    landMarkTitle: '',
+    landMarkAddress: '',
+    landMarkDescription: '',
+    center: { lat: 0, lng: 0, altitude: 0 },
+    tilt: 0,
+    heading: 0,
+    range: 0,
+    markerAltitude: 0,
+    markerPosition: null
+};
