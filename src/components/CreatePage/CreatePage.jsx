@@ -1,7 +1,7 @@
 import { useEffect, useState, useReducer, useRef } from "react"
 import { useMap } from "../../providers/MapProvider"
-import "./createPage.css"
 import { urlReducer, initialURLState, landmarkReducer, initialLandmarkState } from "./createReducers"
+import "./createPage.css"
 
 export default function CreatePage() {
     const { loader, currentLandmark } = useMap()
@@ -22,14 +22,15 @@ export default function CreatePage() {
     useEffect(() => {
 
         if (landmarkState.markerPosition) {
+            // remove old marker
             if (markerRef.current) {
                 markerRef.current.remove()
             }
 
+            // create new marker
             const { lat, lng } = landmarkState.markerPosition
             markerRef.current.label = landmarkState.landMarkTitle || 'Landmark Title'
             markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) || 0.0 }
-            console.log(lat, lng, landmarkState.markerAltitude, markerRef.current)
             mapRef.current.append(markerRef.current)
         }
     }, [landmarkState.markerPosition, landmarkState.markerAltitude])
@@ -134,7 +135,6 @@ export default function CreatePage() {
     };
 
     async function getElevationforPoint(location) {
-        const { ElevationService } = await google.maps.importLibrary("elevation");
         // Get place elevation using the ElevationService.
         const elevatorService = new google.maps.ElevationService();
         const elevationResponse = await elevatorService.getElevationForLocations({
@@ -150,6 +150,7 @@ export default function CreatePage() {
 
     function submit(e) {
         e.preventDefault()
+
         const formData = new FormData()
         formData.append('file', imageFile)
         formData.append('landmarkState', JSON.stringify(landmarkState))
@@ -170,31 +171,33 @@ export default function CreatePage() {
                 <thead>
                     <tr>
                         <th scope="col">Search</th>
+                        <th scope="col">Marker Altitude</th>
                         <th scope="col">Alitude</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Longitude</th>
                         <th scope="col">Tilt</th>
                         <th scope="col">Heading</th>
                         <th scope="col">Range</th>
-                        <th scope="col">Marker Altitude</th>
-
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td> <input className="form-control" ref={searchRef} type="text"></input></td>
+                        <td>
+                            <input className="form-control"
+                                value={landmarkState.markerAltitude}
+                                onChange={(e) => dispatchLandmark({ type: "SET_MARKER_ALTITUDE", payload: e.target.value })}
+                                type="number">
+                            </input>
+                        </td>
                         <td>{landmarkState.center.altitude?.toFixed(2)}</td>
                         <td>{landmarkState.center.lat?.toFixed(2)}</td>
                         <td>{landmarkState.center.lng?.toFixed(2)}</td>
                         <td>{landmarkState.tilt?.toFixed(2)}</td>
                         <td>{landmarkState.heading?.toFixed(2)}</td>
                         <td>{landmarkState.range?.toFixed(2)}</td>
-                        <td><input
-                            value={landmarkState.markerAltitude}
-                            onChange={(e) => dispatchLandmark({ type: "SET_MARKER_ALTITUDE", payload: e.target.value })}
-                            type="number"></input></td>
-                    </tr>
 
+                    </tr>
                 </tbody>
             </table>
 
@@ -204,7 +207,7 @@ export default function CreatePage() {
                 <div className="d-flex flex-column flex-fill gap-2">
 
                     <div>
-                        <label for="floatingInput">Landmark Title</label>
+                        <label for="floatingInput">Title</label>
                         <input
                             value={landmarkState.landMarkTitle}
                             onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_TITLE", payload: e.target.value })}
@@ -213,7 +216,7 @@ export default function CreatePage() {
                     </div>
 
                     <div>
-                        <label for="floatingInput">Landmark Address</label>
+                        <label for="floatingInput">Address</label>
                         <input
                             value={landmarkState.landMarkAddress}
                             onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_ADDRESS", payload: e.target.value })}
@@ -222,7 +225,7 @@ export default function CreatePage() {
                     </div>
 
                     <div>
-                        <label for="floatingTextarea">Landmark Description</label>
+                        <label for="floatingTextarea">Description</label>
                         <textarea
                             value={landmarkState.landMarkDescription}
                             onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_DESCRIPTION", payload: e.target.value })}
@@ -234,9 +237,12 @@ export default function CreatePage() {
 
                 <div className="d-flex flex-column flex-fill gap-1">
 
-
-                    <select class="form-select mt-4" aria-label="Default select example" required>
-                        <option selected>Select category</option>
+                <label for="floatingPassword">Category</label>
+                    <select class="form-select mt-4"
+                        aria-label="Default select example"
+                        onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_CATEGORY", payload: e.target.value })}
+                        required>
+                        <option value="">Select category</option>
                         <option value="artist">Artist</option>
                         <option value="genre">Genre</option>
                         <option value="studio">Studio</option>
@@ -263,8 +269,8 @@ export default function CreatePage() {
                 <div className="d-flex flex-column">
 
                     <div className="mt-4 mb-5">
-                        <label for="landmark-image" className="custom-file-upload">Choose landmark image:</label>
-                        <input onChange={(e) => setImageFile(e.target.files[0])} type="file" id="landmark-image" accept="image/png, image/jpeg" required />
+                            <label for="formFile" class="form-label">Image</label>
+                            <input class="form-control" type="file" onChange={(e) => setImageFile(e.target.files[0])} accept="image/png, image/jpeg" required/>
                     </div>
 
                     <button id="create-btn" type="submit" className="btn mt-5" >Create Landmark</button>

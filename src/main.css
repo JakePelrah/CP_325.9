@@ -39,3 +39,7 @@ textarea{
 .btn-close {
   filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(259deg) brightness(104%) contrast(101%);
 }
+
+label {
+  color: white;
+}

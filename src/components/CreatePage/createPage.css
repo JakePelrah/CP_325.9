@@ -3,14 +3,6 @@
   height: 40vh;
 }
 
-#title {
-  color: #fff;
-  background-color: #4d90fe;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 12px;
-}
-
 #create-table th,
 #create-table td,
 #create-table tr {
@@ -19,30 +11,18 @@
   color: white !important;
 }
 
-
-#create-form {
-  overflow: hidden;
-}
-
-label {
-  color: white;
-}
-
-#landmark-image {
-  color: white;
-}
-
-input[type="file"] {
+/* input[type="file"] {
   display: none;
-}
+} */
 
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
-}
+} 
 
 #create-btn {
   background-color: var(--scrollbar-thumb);
+  color: white;
 }

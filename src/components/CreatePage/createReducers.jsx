@@ -20,6 +20,7 @@ export const initialURLState = {
 
 
 export const landmarkReducer = (state, action) => {
+    console.log(state, action)
     switch (action.type) {
         case "SET_LANDMARK_TITLE":
             return { ...state, landMarkTitle: action.payload };
@@ -27,6 +28,8 @@ export const landmarkReducer = (state, action) => {
             return { ...state, landMarkAddress: action.payload };
         case "SET_LANDMARK_DESCRIPTION":
             return { ...state, landMarkDescription: action.payload };
+        case "SET_LANDMARK_CATEGORY":
+            return { ...state, landMarkCategory: action.payload };
         case "SET_LANDMARK_CENTER":
             return { ...state, center: action.payload };
         case "SET_LANDMARK_TILT":
@@ -47,6 +50,7 @@ export const initialLandmarkState = {
     landMarkTitle: '',
     landMarkAddress: '',
     landMarkDescription: '',
+    landMarkCategory:'',
     center: { lat: 0, lng: 0, altitude: 0 },
     tilt: 0,
     heading: 0,
