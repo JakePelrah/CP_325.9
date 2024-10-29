@@ -172,9 +172,9 @@ export default function CreatePage() {
                     <tr>
                         <th scope="col">Search</th>
                         <th scope="col">Marker Altitude</th>
-                        <th scope="col">Alitude</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Longitude</th>
+                        <th scope="col">Alitude</th>
                         <th scope="col">Tilt</th>
                         <th scope="col">Heading</th>
                         <th scope="col">Range</th>
@@ -190,9 +190,9 @@ export default function CreatePage() {
                                 type="number">
                             </input>
                         </td>
-                        <td>{landmarkState.center.altitude?.toFixed(2)}</td>
                         <td>{landmarkState.center.lat?.toFixed(2)}</td>
                         <td>{landmarkState.center.lng?.toFixed(2)}</td>
+                        <td>{landmarkState.center.altitude?.toFixed(2)}</td>
                         <td>{landmarkState.tilt?.toFixed(2)}</td>
                         <td>{landmarkState.heading?.toFixed(2)}</td>
                         <td>{landmarkState.range?.toFixed(2)}</td>
@@ -238,7 +238,7 @@ export default function CreatePage() {
                 <div className="d-flex flex-column flex-fill gap-1">
 
                 <label for="floatingPassword">Category</label>
-                    <select class="form-select mt-4"
+                    <select class="form-select"
                         aria-label="Default select example"
                         onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_CATEGORY", payload: e.target.value })}
                         required>
@@ -267,8 +267,7 @@ export default function CreatePage() {
                 </div>
 
                 <div className="d-flex flex-column">
-
-                    <div className="mt-4 mb-5">
+                    <div className="">
                             <label for="formFile" class="form-label">Image</label>
                             <input class="form-control" type="file" onChange={(e) => setImageFile(e.target.files[0])} accept="image/png, image/jpeg" required/>
                     </div>
