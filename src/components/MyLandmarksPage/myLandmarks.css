@@ -1,3 +1,14 @@
+#my-landmarks{
+    overflow-y: scroll;
+    height: 100vh;
+    padding-bottom: 4em;
+}
+
+#my-landmarks table td, 
+#my-landmarks table th {
+    padding-left: 3em;
+}
+
 .lm-my-landmark-img {
     width: 5em;
     height: 5em;

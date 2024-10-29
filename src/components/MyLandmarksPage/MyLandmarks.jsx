@@ -44,7 +44,7 @@ export default function MyLandmarks() {
     )
 
     return (
-        <>
+        <div id="my-landmarks">
                 <table class="table">
                     <thead>
                         <tr>
@@ -60,7 +60,7 @@ export default function MyLandmarks() {
                 </table>
             <DeleteModal modalRef={deleteModalRef} currentLandmark={currentLandmark} removeLandmark={removeLandmark} />
             <EditModal modalRef={editModalRef} currentLandmark={currentLandmark} updateLandmark={updateLandmark} />
-        </>
+        </div>
     )
 }
 
