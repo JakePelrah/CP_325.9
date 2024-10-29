@@ -11,6 +11,7 @@ html{
 body {
   min-height: 100vh;
   background-color: var(--main-color); 
+
 }
 /* hide the development banner */
 .vAygCK-api-load-alpha-banner {

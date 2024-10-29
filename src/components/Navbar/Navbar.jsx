@@ -13,11 +13,11 @@ export default function Navbar() {
                 <a class="navbar-brand" href="/">Music Landmarks</a>
 
                 {location.pathname === '/'
-                    ? <Link to='map' id="explore-btn">Explore</Link>
+                    ? <Link className="btn" to='map' id="explore-btn">Explore</Link>
                     : <div>
                         {isLoggedIn._id
                             ? <div class="dropdown">
-                                <button id="profile-toggle" class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button  class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img id="profile-image" src={isLoggedIn?._json?.picture}></img>
                                 </button>
                                 <ul class="dropdown-menu">

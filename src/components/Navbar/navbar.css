@@ -1,37 +1,24 @@
+nav{
+    background-color: var(--sidebar-color);
+}
+
 .navbar-brand{
     font-size: 2em;
     font-weight: bold;
     color: white;
 }
 
-nav{
-    background-color: var(--sidebar-color);
-}
-
 #profile-image{
     clip-path: circle();
-    height: 2em;
-    width: 2em;
-}
-
-#profile-toggle{
-    background-color: transparent !important;
-    border: none;
+    height: 2.5em;
+    width: 2.5em;
 }
 
 #signin-btn,
-#signin-btn:hover {
-    color: white;
-    font-weight: bold;
-    font-size: 1.5em;
-    border-radius: 1em;
-}
-
+#signin-btn:hover,
 #explore-btn,
-#explore-btn:hover{
+#explore-btn:hover {
     color: white;
     font-weight: bold;
     font-size: 1.5em;
-    border-radius: 1em;
-    text-decoration: none;
 }
