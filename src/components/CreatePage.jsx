@@ -20,6 +20,10 @@ export default function CreatePage() {
     const [landMarkAddress, setlandMarkAddress] = useState(null)
     const [markerAltitude, setMarkerAltitude] = useState(0)
     const [imageFile, setImageFile] = useState(null)
+    const [ defaultURL, setDefaultURL] = useState('https://')
+    const [ youTubeURL, setYouTubeURL] = useState('https://')
+    const [ wikiURL, setWikiURL] = useState('https://')
+
 
 
     useEffect(() => {
@@ -177,6 +181,10 @@ export default function CreatePage() {
         formData.append('heading', heading);
         formData.append('range', range);
         formData.append('markerAltitude', markerAltitude);
+        formData.append('defaultURL', defaultURL);
+        formData.append('wikiURL', wikiURL);
+        formData.append('youTubeURL', youTubeURL);
+
 
         console.log(formData)
         fetch('/createLandmark', {
@@ -259,17 +267,17 @@ export default function CreatePage() {
 
                     <div>
                         <label for="floatingPassword">Default URL</label>
-                        <input type="text" className="form-control" />
+                        <input value={defaultURL} onChange={(e)=>setDefaultURL(e.target.value)}  type="text" className="form-control" />
                     </div>
 
                     <div>
                         <label for="floatingPassword">Wiki URL</label>
-                        <input type="text" className="form-control" />
+                        <input value={wikiURL} onChange={(e)=>setWikieURL(e.target.value)}  type="text" className="form-control" />
                     </div>
 
                     <div>
                         <label for="floatingPassword">YouTube URL</label>
-                        <input type="text" className="form-control" />
+                        <input value={youTubeURL} onChange={(e)=>setYouTubeURL(e.target.value)} type="text" className="form-control" />
                     </div>
 
                 </div>
