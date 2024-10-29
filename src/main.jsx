@@ -16,7 +16,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import './index.css'
+import './main.css'
 
 const router = createBrowserRouter([
   {
