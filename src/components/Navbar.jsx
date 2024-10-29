@@ -15,13 +15,14 @@ export default function Navbar() {
 
                 {location.pathname === '/'
                     ? <Link to='map' id="explore-btn">Explore</Link>
-            :<div>
+                    : <div>
                         {isLoggedIn._id
                             ? <div class="dropdown">
                                 <button id="profile-toggle" class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img id="profile-image" src={isLoggedIn?._json?.picture}></img>
                                 </button>
                                 <ul class="dropdown-menu">
+                                    <Link className="dropdown-item" to='create'>Create</Link>
                                     <Link className="dropdown-item" to='myLandmarks'>My Landmarks</Link>
                                     <li><a class="dropdown-item" onClick={logout} >Logout</a></li>
                                 </ul>
