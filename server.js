@@ -7,6 +7,7 @@ import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import MongoStore from 'connect-mongo';
 
+
 // Import routes
 import { authRouter } from './backend/routes/auth.js';
 import { landmarkRouter } from './backend/routes/landmarks.js';

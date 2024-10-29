@@ -1,7 +1,8 @@
 import express from "express";
 import { getLandmarks } from "../db/index.js";
+import multer from 'multer';
+const upload = multer({ dest: 'uploads/' })
 
-// Create an Express router for authentication
 export const landmarkRouter = express.Router();
 
 
@@ -34,4 +35,24 @@ landmarkRouter.get('/getLandmarks', (req, res) => {
    catch (e) {
       res.json({})
    }
+})
+
+
+landmarkRouter.post('/createLandmark',upload.single('file'), (req, res)=>{
+   console.log(req.body); // Logs all the form fields
+   console.log(req.file); // Logs the file information
+ 
+   // You can now access all the fields:
+   const {
+     landMarkTitle,
+     landMarkAddress,
+     landMarkDescription,
+     altitude,
+     latitude,
+     longitude,
+     tilt,
+     heading,
+     range,
+     markerAltitude,
+   } = req.body;
 })

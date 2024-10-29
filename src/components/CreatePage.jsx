@@ -11,7 +11,6 @@ export default function CreatePage() {
     const [tilt, setTilt] = useState(0)
     const [heading, setHeading] = useState(0)
     const [range, setRange] = useState(0)
-    const [roll, setRoll] = useState(0)
     const [altitude, setAltitude] = useState(0)
     const [latitude, setLatitude] = useState(0)
     const [longitude, setLongitude] = useState(0)
@@ -20,6 +19,8 @@ export default function CreatePage() {
     const [clickPosition, setClickPosition] = useState(null)
     const [landMarkAddress, setlandMarkAddress] = useState(null)
     const [markerAltitude, setMarkerAltitude] = useState(0)
+    const [imageFile, setImageFile] = useState(null)
+
 
     useEffect(() => {
         initMap()
@@ -78,10 +79,6 @@ export default function CreatePage() {
 
                 mapRef.current.addEventListener("gmp-rangechange", () => {
                     setRange(mapRef.current.range)
-                });
-
-                mapRef.current.addEventListener("gmp-rollchange", () => {
-                    setRoll(mapRef.current.roll)
                 });
 
                 mapRef.current.addEventListener("gmp-tiltchange", () => {
@@ -160,8 +157,32 @@ export default function CreatePage() {
         return elevation;
     }
 
-    function submit() {
+    function submit(e) {
+        e.preventDefault()
+        const obj = {
+            landMarkTitle, landMarkAddress, landMarkDescription, altitude, latitude, longitude,
+            tilt, heading, range, markerAltitude,
+        }
+        alert(JSON.stringify(obj))
 
+        const formData = new FormData()
+        formData.append('file', imageFile)
+        formData.append('landMarkTitle', landMarkTitle);
+        formData.append('landMarkAddress', landMarkAddress);
+        formData.append('landMarkDescription', landMarkDescription);
+        formData.append('altitude', altitude);
+        formData.append('latitude', latitude);
+        formData.append('longitude', longitude);
+        formData.append('tilt', tilt);
+        formData.append('heading', heading);
+        formData.append('range', range);
+        formData.append('markerAltitude', markerAltitude);
+
+        console.log(formData)
+        fetch('/createLandmark', {
+            method: 'POST',
+            body:formData
+        })
     }
 
     return (
@@ -199,18 +220,20 @@ export default function CreatePage() {
             </table>
 
 
-            <div className="d-flex justify-content-center gap-5 mx-5">
+            <form onSubmit={submit} className="d-flex justify-content-center gap-5 mx-5">
 
                 <div className="d-flex flex-column flex-fill gap-2">
 
                     <div>
                         <label for="floatingInput">Landmark Title</label>
-                        <input value={landMarkTitle} onChange={(e) => setlandMarkTitle(e.target.value)} type="text" className="form-control" />
+                        <input value={landMarkTitle} onChange={(e) => setlandMarkTitle(e.target.value)} type="text"
+                            className="form-control" required />
                     </div>
 
                     <div>
                         <label for="floatingInput">Landmark Address</label>
-                        <input value={landMarkAddress} onChange={(e) => setlandMarkAddress(e.target.value)} type="text" className="form-control" />
+                        <input value={landMarkAddress} onChange={(e) => setlandMarkAddress(e.target.value)} type="text"
+                            className="form-control" required />
                     </div>
 
                     <div>
@@ -218,7 +241,7 @@ export default function CreatePage() {
                         <textarea
                             value={landMarkDescription} onChange={(e) => setlandMarkDescription(e.target.value)}
                             style={{ 'height': '6em' }}
-                            class="form-control"></textarea>
+                            class="form-control" required></textarea>
                     </div>
 
                 </div>
@@ -226,7 +249,7 @@ export default function CreatePage() {
                 <div className="d-flex flex-column flex-fill gap-1">
 
 
-                    <select class="form-select mt-4" aria-label="Default select example">
+                    <select class="form-select mt-4" aria-label="Default select example" required>
                         <option selected>Select category</option>
                         <option value="artist">Artist</option>
                         <option value="genre">Genre</option>
@@ -255,14 +278,14 @@ export default function CreatePage() {
 
                     <div className="mt-4 mb-5">
                         <label for="landmark-image" className="custom-file-upload">Choose landmark image:</label>
-                        <input type="file" id="landmark-image" accept="image/png, image/jpeg" />
+                        <input onChange={(e) => setImageFile(e.target.files[0])} type="file" id="landmark-image" accept="image/png, image/jpeg" required />
                     </div>
 
-                    <button id="create-btn" className="btn mt-5" onSubmit={submit}>Create Landmark</button>
+                    <button id="create-btn" type="submit" className="btn mt-5" >Create Landmark</button>
 
                 </div>
 
-            </div>
+            </form>
 
         </div>
     )
