@@ -7,6 +7,7 @@ import UserProvider from './providers/UserProvider.jsx';
 import Navbar from './components/Navbar.jsx';
 import Home from './components/Home.jsx';
 import MapPage from './components/MapPage.jsx'
+import CreatePage from './components/CreatePage.jsx';
 import MyLandmarks from './components/MyLandmarks.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 // react router
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/map",
         element: <MapPage />,
+      },
+      {
+        path: "create",
+        element: <CreatePage />
       },
       {
         path: "myLandmarks",
