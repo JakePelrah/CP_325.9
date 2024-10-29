@@ -11,7 +11,7 @@
 }
 
 #description {
-    color: var(--sidebar-color-text);
+    color: var(--main-color-text);
     overflow-y: scroll;
     scrollbar-color: var(--scrollbar-thumb) var(--sidebar-color);
 }
@@ -24,7 +24,7 @@
     border-left: 1px rgba(255, 255, 255, 0.191) solid;
 }
 #bio a {
-    color: var(--sidebar-color-text);
+    color: var(--main-color-text);
 }
 
 #stats{

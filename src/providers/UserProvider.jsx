@@ -6,12 +6,14 @@ export const useUser = () => useContext(UserContext)
 export default function UserProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState({})
 
+    // check if the user is logged in.
     useEffect(() => {
         fetch('http://localhost:3000/isLoggedIn')
             .then(res => res.json())
             .then(setIsLoggedIn)
     }, [])
 
+    // logout user from passport session
     function logout() {
         fetch('http://localhost:3000/logout', { method: 'POST' })
             .then(res => res.json())

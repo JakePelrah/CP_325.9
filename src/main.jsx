@@ -1,21 +1,24 @@
 import { createRoot } from 'react-dom/client'
+
 // providers
 import MapProvider from './providers/MapProvider.jsx';
 import UserProvider from './providers/UserProvider.jsx';
-// components
 
+// components
 import Navbar from './components/Navbar/Navbar.jsx';
 import Home from './components/HomePage/Home.jsx';
 import MapPage from './components/MapPage/MapPage.jsx'
 import CreatePage from './components/CreatePage/CreatePage.jsx';
 import MyLandmarks from './components/MyLandmarksPage/MyLandmarks.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 // react router
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import './main.css'
+
 
 const router = createBrowserRouter([
   {
@@ -28,17 +31,24 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/map",
+        path: "map",
         element: <MapPage />,
       },
       {
-        path: "create",
-        element: <CreatePage />
-      },
-      {
-        path: "myLandmarks",
-        element: <MyLandmarks />
-      },
+        element:<PrivateRoute/>,
+        children:[
+          {
+            path: "create",
+            element: <CreatePage />
+          },
+          {
+            path: "myLandmarks",
+            element: <MyLandmarks />
+          },
+        ]
+      }
+      
+     
     ]
   }
 ]);

@@ -1,24 +1,18 @@
 :root {
-  --sidebar-color-text: #ffffff;
-  --sidebar-color: #292c4e;
+  --main-color-text: #ffffff;
+  --main-color: #292c4e;
   --scrollbar-thumb:#ffffff86;
-  --bg-color:#292c4e92;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: var(--sidebar-color);
-  overflow-y: scroll;
-  overflow-x: hidden;
- 
 }
 
 html{
-  scrollbar-color: var(--scrollbar-thumb) var(--sidebar-color);
+  scrollbar-color: var(--scrollbar-thumb) var(--main-color);
 }
 
+body {
+  min-height: 100vh;
+  background-color: var(--main-color); 
+}
+/* hide the development banner */
 .vAygCK-api-load-alpha-banner {
   visibility: hidden;
 }
