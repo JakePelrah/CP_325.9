@@ -28,7 +28,7 @@ export default function CreatePage() {
 
             const { lat, lng } = landmarkState.markerPosition
             markerRef.current.label = landmarkState.landMarkTitle || 'Landmark Title'
-            markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) }
+            markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) || 0.0 }
             console.log(lat, lng, landmarkState.markerAltitude, markerRef.current)
             mapRef.current.append(markerRef.current)
         }
