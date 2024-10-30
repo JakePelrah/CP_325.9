@@ -34,7 +34,7 @@ export default function MapProvider({ children }) {
             .then(setLandmarks)
     }
 
-    function createLandmark() {
+    function createLandmark(formData) {
         fetch('/createLandmark', {
             method: 'POST',
             body: formData
@@ -42,7 +42,7 @@ export default function MapProvider({ children }) {
             .then(({ inserted, message }) => {
                 if (inserted) {
                     getLandmarksByCategory()
-                    navigate("/map")
+                    window.location.href = '/map'
                 }
                 else {
                     alert("Insertion error", message)
@@ -67,7 +67,7 @@ export default function MapProvider({ children }) {
             currentLandmark,
             removeLandmark,
             updateLandmark,
-            getLandmarksByCategory
+            createLandmark
         }}>
             {children}
         </MapContext.Provider>
