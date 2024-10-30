@@ -10,7 +10,7 @@ export default function MyLandmarks() {
     const [currentLandmark, setCurrentLandmark] = useState(null)
     const editModalRef = useRef(null)
     const deleteModalRef = useRef(null)
-   
+
     // initialize modals
     useEffect(() => {
         editModalRef.current = new bootstrap.Modal(editModalRef.current)
@@ -35,7 +35,7 @@ export default function MyLandmarks() {
         <tr>
             <td>{lm.title}</td>
             <td>{lm.category}</td>
-            <td><img className="lm-my-landmark-img" src={`images/${lm.image_url}`}></img></td>
+            <td><img className="lm-my-landmark-img" src={lm.image_url}></img></td>
             <td>
                 <button onClick={(e) => edit(e, lm)} className="btn my-landmark-btn me-2"><FaRegEdit size={28} /></button>
                 <button onClick={(e) => remove(e, lm)} className="btn my-landmark-btn"><FaTrash size={28} /></button>
@@ -45,19 +45,22 @@ export default function MyLandmarks() {
 
     return (
         <div id="my-landmarks">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Modify</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {renderedLandmarks}
-                    </tbody>
-                </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderedLandmarks}
+                    <tr>
+                        <td className="text-center" colSpan={4}>END OF LIST</td>
+                    </tr>
+                </tbody>
+            </table>
             <DeleteModal modalRef={deleteModalRef} currentLandmark={currentLandmark} removeLandmark={removeLandmark} />
             <EditModal modalRef={editModalRef} currentLandmark={currentLandmark} updateLandmark={updateLandmark} />
         </div>
