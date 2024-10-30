@@ -10,7 +10,7 @@ export const landmarkRouter = express.Router();
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/landmarks')
+      cb(null, 'backend/images/landmarks')
    },
    filename: function (req, file, cb) {
       const originalName = path.parse(file.originalname).name; // Get the original file name without extension
