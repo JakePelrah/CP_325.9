@@ -17,7 +17,7 @@ import { landmarkRouter } from './backend/routes/landmarks.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Define the port for the server
-const port = 3000;
+const port = process.env.PORT || 5001
 const app = express();
 
 // Serve static files from the 'backend/images/landmarks' directory
