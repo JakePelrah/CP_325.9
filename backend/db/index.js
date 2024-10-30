@@ -46,6 +46,11 @@ export async function findOrCreateUser(profile) {
   return user
 }
 
+export async function insertLandmark(newLandmark) {
+  const landmarkCollection = db.collection('landmarks')
+  landmarkCollection.insertOne(newLandmark)
+}
+
 ////////////////////////////////////// READ //////////////////////////////////////
 export async function getLandmarks() {
   const collection = db.collection('landmarks')

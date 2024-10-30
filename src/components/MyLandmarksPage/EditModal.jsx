@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 
 export default function EditModal({ modalRef, currentLandmark, updateLandmark }) {
-    const [landMarkTitle, setlandMarkTitle] = useState('')
-    const [landMarkDescription, setlandMarkDescription] = useState('')
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
     const [defaultURL, setDefaultURL] = useState('')
     const [wikiURL, setWikiURL] = useState('')
     const [youTubeURL, setYouTubeURL] = useState('')
 
     useEffect(() => {
-        setlandMarkTitle(currentLandmark?.title)
-        setlandMarkDescription(currentLandmark?.description)
+        setTitle(currentLandmark?.title)
+        setDescription(currentLandmark?.description)
         setDefaultURL(currentLandmark?.websites.default)
         setWikiURL(currentLandmark?.websites.wikipedia)
         setYouTubeURL(currentLandmark?.websites.youtube)
@@ -19,8 +19,8 @@ export default function EditModal({ modalRef, currentLandmark, updateLandmark })
     function update(e) {
         e.preventDefault()
         console.log(999)
-        if (landMarkTitle && landMarkDescription && defaultURL && wikiURL && youTubeURL) {
-            updateLandmark(currentLandmark._id, { landMarkTitle, landMarkDescription, defaultURL, wikiURL, youTubeURL })
+        if (title && description && defaultURL && wikiURL && youTubeURL) {
+            updateLandmark(currentLandmark._id, {  title,  description, defaultURL, wikiURL, youTubeURL })
             modalRef.current.hide()
         }
         else {
@@ -44,7 +44,7 @@ export default function EditModal({ modalRef, currentLandmark, updateLandmark })
                         <div class="row">
                             <div class="col">
                                 <label for="floatingInput">Landmark Title</label>
-                                <input value={landMarkTitle} onChange={(e) => setlandMarkTitle(e.target.value)} type="text" className="form-control" />
+                                <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" className="form-control" />
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@ export default function EditModal({ modalRef, currentLandmark, updateLandmark })
                             <div class="col">
                                 <label>Landmark Description</label>
                                 <textarea
-                                    value={landMarkDescription} onChange={(e) => setlandMarkDescription(e.target.value)}
+                                    value={description} onChange={(e) => setDescription(e.target.value)}
                                     style={{ 'height': '10em' }}
                                     class="form-control"></textarea>
                             </div>

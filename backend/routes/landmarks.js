@@ -1,8 +1,8 @@
 import express from "express";
-import { getLandmarks } from "../db/index.js";
+import { getLandmarks, insertLandmark } from "../db/index.js";
 import multer from 'multer';
 import path from 'path'
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 export const landmarkRouter = express.Router();
 
@@ -57,6 +57,45 @@ landmarkRouter.get('/getLandmarks', (req, res) => {
 
 
 landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
-  console.log(req.file.filename)
-  console.log(req.body)
+
+   const { filename } = req.file
+   let { landmarkState, urlState } = req.body
+   console.log(JSON.parse(landmarkState))
+   const { defaultURL, youTubeURL, wikiURL } = JSON.parse(urlState)
+   const { title, description, address,
+      category, tilt, range, heading, center, markerPosition } = JSON.parse(landmarkState)
+
+
+   const newObj = {
+      "title": title,
+      "description": description,
+      "address": address,
+      "category": category,
+      "camera": {
+         "tilt": tilt,
+         "range": range,
+         "heading": heading
+      },
+      "coords": {
+         "view": {
+            "latitude": center.lat,
+            "longitude": center.lng,
+            "altitude": center.altitude
+         },
+         "marker": {
+            "latitude": markerPosition.lat,
+            "longitude": markerPosition.lng,
+            "altitude": markerPosition.altitude
+         }
+      },
+      "created": new Date(),
+      "websites": {
+         "wikipedia": wikiURL,
+         "default": defaultURL,
+         "youtube": youTubeURL
+      },
+      "image_url":`/images/landmarks/${filename}`
+   }
+   console.log(newObj)
+   insertLandmark(newObj)
 })

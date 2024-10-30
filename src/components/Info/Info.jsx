@@ -4,7 +4,7 @@ import './info.css'
 
 export default function Info({ currentLandmark }) {
 
-  return (<div id="info" className="d-flex">
+  return (<div id="info" className="d-flex justify-content-between">
 
     <div id="description" className="d-flex flex-column mx-3 mt-3">
       <div className="mb-3">
@@ -17,7 +17,7 @@ export default function Info({ currentLandmark }) {
     </div>
 
     <div id="bio" className="d-flex flex-column">
-      <img className="info-image" src={`images/${currentLandmark.image_url}`}></img>
+      <img className="info-image" src={currentLandmark.image_url}></img>
       <div className="d-flex justify-content-center gap-3 mt-2">
         <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['default']}><BsLink45Deg size={26} /></a>
         <a target="_blank" rel="noopener noreferrer" href={currentLandmark.websites['wikipedia']}><BsWikipedia size={26} /></a>

@@ -17,19 +17,17 @@ export const initialURLState = {
     wikiURL: 'https://',
 };
 
-
-
 export const landmarkReducer = (state, action) => {
     console.log(state, action)
     switch (action.type) {
         case "SET_LANDMARK_TITLE":
-            return { ...state, landMarkTitle: action.payload };
+            return { ...state, title: action.payload };
         case "SET_LANDMARK_ADDRESS":
-            return { ...state, landMarkAddress: action.payload };
+            return { ...state, address: action.payload };
         case "SET_LANDMARK_DESCRIPTION":
-            return { ...state, landMarkDescription: action.payload };
+            return { ...state, description: action.payload };
         case "SET_LANDMARK_CATEGORY":
-            return { ...state, landMarkCategory: action.payload };
+            return { ...state, category: action.payload };
         case "SET_LANDMARK_CENTER":
             return { ...state, center: action.payload };
         case "SET_LANDMARK_TILT":
@@ -47,10 +45,10 @@ export const landmarkReducer = (state, action) => {
     }
 };
 export const initialLandmarkState = {
-    landMarkTitle: '',
-    landMarkAddress: '',
-    landMarkDescription: '',
-    landMarkCategory:'',
+    title: '',
+    address: '',
+    description: '',
+    category:'',
     center: { lat: 0, lng: 0, altitude: 0 },
     tilt: 0,
     heading: 0,

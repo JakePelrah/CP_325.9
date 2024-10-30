@@ -29,7 +29,7 @@ export default function CreatePage() {
 
             // create new marker
             const { lat, lng } = landmarkState.markerPosition
-            markerRef.current.label = landmarkState.landMarkTitle || 'Landmark Title'
+            markerRef.current.label = landmarkState.title || 'Landmark Title'
             markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) || 0.0 }
             mapRef.current.append(markerRef.current)
         }
@@ -38,9 +38,9 @@ export default function CreatePage() {
 
     useEffect(() => {
         if (markerRef.current) {
-            markerRef.current.label = landmarkState.landMarkTitle || 'Landmark Title'
+            markerRef.current.label = landmarkState.title || 'Landmark Title'
         }
-    }, [landmarkState.landMarkTitle])
+    }, [landmarkState.title])
 
     function initMap() {
         loader.importLibrary('maps3d')
@@ -209,7 +209,7 @@ export default function CreatePage() {
                     <div>
                         <label for="floatingInput">Title</label>
                         <input
-                            value={landmarkState.landMarkTitle}
+                            value={landmarkState.title}
                             onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_TITLE", payload: e.target.value })}
                             type="text"
                             className="form-control" required />
@@ -218,7 +218,7 @@ export default function CreatePage() {
                     <div>
                         <label for="floatingInput">Address</label>
                         <input
-                            value={landmarkState.landMarkAddress}
+                            value={landmarkState.address}
                             onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_ADDRESS", payload: e.target.value })}
                             type="text"
                             className="form-control" required />
@@ -227,7 +227,7 @@ export default function CreatePage() {
                     <div>
                         <label for="floatingTextarea">Description</label>
                         <textarea
-                            value={landmarkState.landMarkDescription}
+                            value={landmarkState.description}
                             onChange={(e) => dispatchLandmark({ type: "SET_LANDMARK_DESCRIPTION", payload: e.target.value })}
                             style={{ 'height': '6em' }}
                             class="form-control" required></textarea>
