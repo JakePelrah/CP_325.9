@@ -159,7 +159,7 @@ export default function CreatePage() {
     }
 
     return (
-        <div className="">
+        <>
 
             <div ref={mapElemRef} id="create-map"></div>
 
@@ -196,7 +196,7 @@ export default function CreatePage() {
             </table>
 
 
-            <form onSubmit={submit} className="d-flex justify-content-center gap-5 mx-5">
+            <form onSubmit={submit} className="d-flex justify-content-center gap-5 mx-5 mt-5">
 
                 <div className="d-flex flex-column flex-fill gap-2">
 
@@ -283,6 +283,6 @@ export default function CreatePage() {
 
             </form>
 
-        </div>
+        </>
     )
 }
