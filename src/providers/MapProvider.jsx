@@ -89,6 +89,9 @@ export default function MapProvider({ children }) {
             .then(({ patched, message }) => {
                 // If patched, redirect
                 if (patched) {
+                    console.log(patched)
+                    getLandmarksByUser()
+                    getLandmarksByCategory()
                     window.location.href = '/map'
                 }
                 // If patch failed, show error
