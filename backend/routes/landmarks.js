@@ -4,14 +4,16 @@ import multer from 'multer';
 import path from 'path'
 import { v4 as uuidv4 } from 'uuid'
 
+// Create a new router
 export const landmarkRouter = express.Router();
 
-
-
+// Configure Multer storage
 const storage = multer.diskStorage({
+   // Upload images to this directory
    destination: function (req, file, cb) {
       cb(null, 'backend/images/landmarks')
    },
+   // Rename file
    filename: function (req, file, cb) {
       const originalName = path.parse(file.originalname).name; // Get the original file name without extension
       const extension = path.extname(file.originalname); // Get the file extension
@@ -22,8 +24,10 @@ const storage = multer.diskStorage({
    },
 })
 
+// Set Multer storage
 const upload = multer({ storage: storage })
 
+// Get landmarks sorted by category
 landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
    let landmarks = {
       'artist': [],
@@ -44,6 +48,7 @@ landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
    }
 })
 
+// Get landmarks by user Google id
 landmarkRouter.get('/getLandmarksByUser', (req, res) => {
    try {
       getLandmarksByUser(req.user.id).then(landmarks => res.json(landmarks))
@@ -53,7 +58,7 @@ landmarkRouter.get('/getLandmarksByUser', (req, res) => {
    }
 })
 
-
+// Create a new landmark
 landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
 
    const { filename } = req.file
@@ -105,7 +110,7 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
    }
 })
 
-
+// Patch a landmark
 landmarkRouter.patch('/patchLandmark', (req, res) => {
    try {
       const {id, updatedLandmark} = req.body
@@ -117,6 +122,7 @@ landmarkRouter.patch('/patchLandmark', (req, res) => {
    }
 })
 
+// Delete a landmark
 landmarkRouter.delete('/deleteLandmark', (req, res) => {
    try {
       deleteLandmark(req.body.id)
