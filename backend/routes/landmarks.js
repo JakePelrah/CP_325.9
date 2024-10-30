@@ -30,8 +30,8 @@ landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
       'studio': [],
       'artist': [],
       'label': [],
-      'song': []
-
+      'song': [],
+      'genre':[]
    }
    try {
       getLandmarks().then(data => {
@@ -64,6 +64,7 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
    const { title, description, address,
       category, tilt, range, heading, center, markerPosition } = JSON.parse(landmarkState)
 
+      // console.log(markerPosition)
 
    const newObj = {
       "title": title,
@@ -93,8 +94,10 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
          "default": defaultURL,
          "youtube": youTubeURL
       },
-      "image_url": `/images/landmarks/${filename}`
+      "image_url": `/images/landmarks/${filename}`,
+      "user_id":req.user.id
    }
+   console.log(newObj)
 
    try {
       insertLandmark(newObj)
@@ -107,7 +110,6 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
 
 
 landmarkRouter.patch('/patchLandmark', (req, res) => {
-   console.log(req.body)
    try {
       const {id, updatedLandmark} = req.body
       patchLandmark(id, updatedLandmark)

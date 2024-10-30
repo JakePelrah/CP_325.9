@@ -1,18 +1,17 @@
 import { useEffect, useState, useReducer, useRef } from "react"
-
 import { useMap } from "../../providers/MapProvider"
 import { urlReducer, initialURLState, landmarkReducer, initialLandmarkState } from "./createReducers"
 import "./createPage.css"
 
 export default function CreatePage() {
     const { loader, currentLandmark, createLandmark } = useMap()
+    const [imageFile, setImageFile] = useState(null)
+    const [urlState, dispatchURL] = useReducer(urlReducer, initialURLState);
+    const [landmarkState, dispatchLandmark] = useReducer(landmarkReducer, initialLandmarkState);
     const searchRef = useRef(null)
     const mapRef = useRef(null)
     const mapElemRef = useRef(null)
     const markerRef = useRef(null)
-    const [imageFile, setImageFile] = useState(null)
-    const [urlState, dispatchURL] = useReducer(urlReducer, initialURLState);
-    const [landmarkState, dispatchLandmark] = useReducer(landmarkReducer, initialLandmarkState);
 
     useEffect(() => {
         initMap()
