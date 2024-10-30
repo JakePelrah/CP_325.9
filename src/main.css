@@ -21,7 +21,7 @@ body {
 
 /* tables use fixed layout */
 table {
-  table-layout: fixed;
+  table-layout:fixed;
 }
 
 td {
@@ -31,7 +31,6 @@ td {
 textarea{
   resize: none;
   border: 1px solid var(--main-color) !important;
-  /* border-radius: 0 !important;  */
   outline: none !important;
   box-shadow: none !important;
 }
