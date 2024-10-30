@@ -8,14 +8,14 @@ export default function UserProvider({ children }) {
 
     // check if the user is logged in.
     useEffect(() => {
-        fetch('http://localhost:3000/isLoggedIn')
+        fetch('https://psfinal-5d163b773e42.herokuapp.com/isLoggedIn')
             .then(res => res.json())
             .then(setIsLoggedIn)
     }, [])
 
     // logout user from passport session
     function logout() {
-        fetch('http://localhost:3000/logout', { method: 'POST' })
+        fetch('https://psfinal-5d163b773e42.herokuapp.com/logout', { method: 'POST' })
             .then(res => res.json())
             .then(({ redirect }) => {
                 if (redirect) {

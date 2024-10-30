@@ -26,7 +26,7 @@ export default function Navbar() {
                                     <li><a class="dropdown-item" onClick={logout} >Logout</a></li>
                                 </ul>
                             </div>
-                            : <a id="signin-btn" href="http://localhost:3000/login/federated/google" className='btn d-flex align-items-center gap-3'>
+                            : <a id="signin-btn" href="https://psfinal-5d163b773e42.herokuapp.com/login/federated/google" className='btn d-flex align-items-center gap-3'>
                                 <BsPersonCircle size={32} /> Sign in
                             </a>
                         }

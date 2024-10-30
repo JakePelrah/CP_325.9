@@ -32,7 +32,7 @@ app.use(session({
   resave: false, // Prevent resaving unchanged sessions
   saveUninitialized: false, // Don't save uninitialized sessions
   store: MongoStore.create({ 
-    mongoUrl: "mongodb://localhost:27017",
+    mongoUrl: process.env.MONGO_CONNECTION_URL,
     dbName:"lmd",
    }),
   // cookie: { secure: false } // Set secure cookies (change to true in production)
