@@ -1,5 +1,5 @@
 import express from "express";
-import { getLandmarksByUser, getLandmarks, insertLandmark } from "../db/index.js";
+import { getLandmarksByUser, getLandmarks, insertLandmark, deleteLandmark, patchLandmark } from "../db/index.js";
 import multer from 'multer';
 import path from 'path'
 import { v4 as uuidv4 } from 'uuid'
@@ -48,7 +48,7 @@ landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
 
 landmarkRouter.get('/getLandmarksByUser', (req, res) => {
    try {
-      getLandmarksByUser(req.user.id).then(landmarks=>res.json(landmarks))
+      getLandmarksByUser(req.user.id).then(landmarks => res.json(landmarks))
    }
    catch (e) {
       res.json({})
@@ -93,14 +93,37 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
          "default": defaultURL,
          "youtube": youTubeURL
       },
-      "image_url":`/images/landmarks/${filename}`
+      "image_url": `/images/landmarks/${filename}`
    }
 
-   try{
+   try {
       insertLandmark(newObj)
-      res.json({inserted:true})
+      res.json({ inserted: true })
    }
-   catch(e){
-      res.json({inserted:false, message:e})
+   catch (e) {
+      res.json({ inserted: false, message: e })
+   }
+})
+
+
+landmarkRouter.patch('/patchLandmark', (req, res) => {
+   console.log(req.body)
+   try {
+      const {id, updatedLandmark} = req.body
+      patchLandmark(id, updatedLandmark)
+      res.json({ patched: true })
+   }
+   catch (e) {
+      res.json({ patched: false, message: e })
+   }
+})
+
+landmarkRouter.delete('/deleteLandmark', (req, res) => {
+   try {
+      deleteLandmark(req.body.id)
+      res.json({ deleted: true })
+   }
+   catch (e) {
+      res.json({ deleted: false, message: e })
    }
 })

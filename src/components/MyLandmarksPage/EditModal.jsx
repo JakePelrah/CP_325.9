@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function EditModal({ modalRef, currentLandmark, updateLandmark }) {
+export default function EditModal({ modalRef, currentLandmark, patchLandmark }) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [defaultURL, setDefaultURL] = useState('')
@@ -18,9 +18,8 @@ export default function EditModal({ modalRef, currentLandmark, updateLandmark })
 
     function update(e) {
         e.preventDefault()
-        console.log(999)
         if (title && description && defaultURL && wikiURL && youTubeURL) {
-            updateLandmark(currentLandmark._id, {  title,  description, defaultURL, wikiURL, youTubeURL })
+            patchLandmark(currentLandmark._id, {  title,  description, defaultURL, wikiURL, youTubeURL })
             modalRef.current.hide()
         }
         else {

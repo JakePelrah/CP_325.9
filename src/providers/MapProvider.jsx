@@ -16,7 +16,7 @@ export default function MapProvider({ children }) {
     const [landmarksByCategory, setLandmarksByCategory] = useState({})
     const [landmarksByUser, setLandmarksByUser] = useState([])
     const [currentLandmark, setCurrentLandmark] = useState(initialLandmark)
-    const [enableDefaultLabels, setEnableDefaultLabels]= useState(null)
+    const [enableDefaultLabels, setEnableDefaultLabels] = useState(null)
 
     useEffect(() => {
         getLandmarksByCategory()
@@ -53,11 +53,36 @@ export default function MapProvider({ children }) {
     }
 
     function removeLandmark(id) {
-        console.log(id)
+        fetch('/deleteLandmark', {
+            method: 'DELETE',
+            body: JSON.stringify({ id }),
+            headers: { 'Content-Type': "application/json" }
+        }).then(res => res.json())
+            .then(({ deleted, message }) => {
+                console.log(deleted, message)
+                if (deleted) {
+                    getLandmarksByUser()
+                }
+                else {
+                    alert(message)
+                }
+            })
     }
 
-    function updateLandmark(id, update) {
-        console.log(id, update)
+    function patchLandmark(id, updatedLandmark) {
+        fetch('/patchLandmark', {
+            method: 'PATCH',
+            body: JSON.stringify({ id, updatedLandmark }),
+            headers: { 'Content-Type': "application/json" }
+        }).then(res => res.json())
+            .then(({ patched, message }) => {
+                if (patched) {
+                    window.location.href = '/map'
+                }
+                else {
+                    alert('Patch failed:', message)
+                }
+            })
     }
 
     return (
@@ -68,10 +93,10 @@ export default function MapProvider({ children }) {
             setCurrentLandmark,
             currentLandmark,
             removeLandmark,
-            updateLandmark,
+            patchLandmark,
             createLandmark,
             enableDefaultLabels,
-            setEnableDefaultLabels
+            setEnableDefaultLabels,
         }}>
             {children}
         </MapContext.Provider>

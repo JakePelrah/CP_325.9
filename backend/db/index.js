@@ -13,21 +13,6 @@ try {
 
 let db = conn.db('lmd')
 
-/* Landmark
-{
-  title:'',
-  description:'',
-  category:'',
-  coords:{
-    lat:0,
-    lng:0},
-  created:new Date(),
-  websites:['',''],
-  related:[],
-  image_url:'',
-
-}
-    */
 
 ////////////////////////////// CREATE //////////////////////////////////////
 export async function findOrCreateUser(profile) {
@@ -54,7 +39,7 @@ export async function insertLandmark(newLandmark) {
 ////////////////////////////////////// READ //////////////////////////////////////
 export async function getLandmarksByUser(user_id) {
   const collection = db.collection('landmarks')
-  const results = collection.find({user_id}).toArray()
+  const results = collection.find({ user_id }).toArray()
   return results
 }
 
@@ -64,27 +49,27 @@ export async function getLandmarks() {
   return results
 }
 
-
-
 ////////////////////////////////////// UPDATE //////////////////////////////////////
-export async function patchLandmark(transactionId, record) {
-  // const transaction = {
-  //   accountId: parseInt(record.accountId),
-  //   amount: Decimal128.fromString(record.amount),
-  //   category: record.category,
-  //   type: record.type,
-  //   created: new Date(),
-  // };
-  // const collection = db.collection('transactions')
-  // const results = collection.updateOne({ transactionId }, { $set: transaction })
-  // return results
+export async function patchLandmark(id, updatedLandmark) {
+  const { title, description, defaultURL, wikiURL, youTubeURL } = updatedLandmark
+  const collection = db.collection('landmarks')
+  const results = collection.updateOne({ _id: new ObjectId(id) }, {
+    $set: {
+      title,
+      description,
+      defaultURL,
+      wikiURL,
+      youTubeURL
+    }
+  })
+  return results
 }
 
 ////////////////////////////////////// DELETE //////////////////////////////////////
-export async function deleteLandmark(transactionId) {
-  // const collection = db.collection('transactions')
-  // const results = collection.deleteOne({ transactionId })
-  // return results
+export async function deleteLandmark(id) {
+  const collection = db.collection('landmarks')
+  const results = collection.deleteOne({ _id: new ObjectId(id) })
+  return results
 }
 
 

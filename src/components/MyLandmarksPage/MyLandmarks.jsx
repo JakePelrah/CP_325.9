@@ -6,7 +6,7 @@ import { FaRegEdit, FaTrash } from "react-icons/fa";
 import './myLandmarks.css'
 
 export default function MyLandmarks() {
-    const { landmarksByUser, removeLandmark, updateLandmark } = useMap()
+    const { landmarksByUser, removeLandmark, patchLandmark } = useMap()
     const [currentLandmark, setCurrentLandmark] = useState(null)
     const editModalRef = useRef(null)
     const deleteModalRef = useRef(null)
@@ -62,7 +62,7 @@ export default function MyLandmarks() {
                 </tbody>
             </table>
             <DeleteModal modalRef={deleteModalRef} currentLandmark={currentLandmark} removeLandmark={removeLandmark} />
-            <EditModal modalRef={editModalRef} currentLandmark={currentLandmark} updateLandmark={updateLandmark} />
+            <EditModal modalRef={editModalRef} currentLandmark={currentLandmark} patchLandmark={patchLandmark} />
         </div>
     )
 }
