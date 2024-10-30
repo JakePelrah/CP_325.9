@@ -60,7 +60,6 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
 
    const { filename } = req.file
    let { landmarkState, urlState } = req.body
-   console.log(JSON.parse(landmarkState))
    const { defaultURL, youTubeURL, wikiURL } = JSON.parse(urlState)
    const { title, description, address,
       category, tilt, range, heading, center, markerPosition } = JSON.parse(landmarkState)

@@ -5,7 +5,7 @@ import { urlReducer, initialURLState, landmarkReducer, initialLandmarkState } fr
 import "./createPage.css"
 
 export default function CreatePage() {
-    const { loader, currentLandmark, getLandmarks } = useMap()
+    const { loader, currentLandmark, createLandmark } = useMap()
     const navigate = useNavigate()
     const searchRef = useRef(null)
     const mapRef = useRef(null)
@@ -157,20 +157,7 @@ export default function CreatePage() {
         formData.append('file', imageFile)
         formData.append('landmarkState', JSON.stringify(landmarkState))
         formData.append('urlState', JSON.stringify(urlState))
-
-        fetch('/createLandmark', {
-            method: 'POST',
-            body: formData
-        }).then(res=>res.json())
-        .then(({inserted, message})=>{
-            if(inserted){
-                getLandmarks()
-                navigate("/map")
-            }
-            else{
-                alert("Insertion error", message)
-            }
-        })
+        createLandmark(formData)
     }
 
     return (

@@ -34,12 +34,27 @@ export default function MapProvider({ children }) {
             .then(setLandmarks)
     }
 
+    function createLandmark() {
+        fetch('/createLandmark', {
+            method: 'POST',
+            body: formData
+        }).then(res => res.json())
+            .then(({ inserted, message }) => {
+                if (inserted) {
+                    getLandmarksByCategory()
+                    navigate("/map")
+                }
+                else {
+                    alert("Insertion error", message)
+                }
+            })
+    }
 
-    function removeLandmark(id){
+    function removeLandmark(id) {
         console.log(id)
     }
 
-    function updateLandmark(id, update){
+    function updateLandmark(id, update) {
         console.log(id, update)
     }
 
@@ -52,7 +67,7 @@ export default function MapProvider({ children }) {
             currentLandmark,
             removeLandmark,
             updateLandmark,
-            getLandmarks
+            getLandmarksByCategory
         }}>
             {children}
         </MapContext.Provider>
