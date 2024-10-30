@@ -10,10 +10,12 @@ export default function MapPage() {
   const markerRef = useRef(null)
   const mapElemRef = useRef(null)
 
+  // Initialize 3D map
   useEffect(() => {
     initMap()
   }, [])
 
+  // Updare map and marker when landmark changes
   useEffect(() => {
     if (currentLandmark._id && markerRef.current) {
       updateMap()
@@ -21,16 +23,19 @@ export default function MapPage() {
     }
   }, [currentLandmark])
 
+  // Toggle default Google labels
   useEffect(()=>{
     if(mapRef.current){
       mapRef.current.defaultLabelsDisabled = enableDefaultLabels
     }
   },[enableDefaultLabels])
 
+  // Initialize Google map
   function initMap() {
     loader.importLibrary('maps3d')
       .then(async ({ Map3DElement, Marker3DElement }) => {
 
+        // Create reference to Google map
         mapRef.current = new Map3DElement({
           defaultLabelsDisabled: true,
           center: {
@@ -43,6 +48,7 @@ export default function MapPage() {
           heading: currentLandmark.camera.heading,
         });
 
+        // Create marker for map
         markerRef.current = new Marker3DElement({
           position: {
             lat: currentLandmark.coords.marker.latitude,
@@ -54,11 +60,13 @@ export default function MapPage() {
           label: currentLandmark.title
         });
 
+        // Add map and marker to DOM
         mapRef?.current?.append(markerRef.current)
         mapElemRef?.current?.append(mapRef.current)
       })
   }
 
+  // Update map location
   function updateMap() {
     mapRef?.current?.flyCameraTo({
       endCamera: {
@@ -75,6 +83,7 @@ export default function MapPage() {
     });
   }
 
+  // Update marker location
   function updateMarker() {
     markerRef.current.position = {
       lat: currentLandmark.coords.marker.latitude,

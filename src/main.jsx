@@ -36,6 +36,7 @@ const router = createBrowserRouter([
         element: <MapPage />,
       },
       {
+        // Routes only accessible when logged in.
         element:<PrivateRoute/>,
         children:[
           {

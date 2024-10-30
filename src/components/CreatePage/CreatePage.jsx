@@ -13,21 +13,24 @@ export default function CreatePage() {
     const mapElemRef = useRef(null)
     const markerRef = useRef(null)
 
+    // Initialize Google APIS
     useEffect(() => {
         initMap()
         initPlaces()
     }, [])
 
 
+    // When marker position or altitude changes
     useEffect(() => {
 
         if (landmarkState.markerPosition) {
-            // remove old marker
+
+            // Remove old marker
             if (markerRef.current) {
                 markerRef.current.remove()
             }
 
-            // create new marker
+            // Update marker position and altitude
             const { lat, lng } = landmarkState.markerPosition
             markerRef.current.label = landmarkState.title || 'Landmark Title'
             markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) || 0.0 }
@@ -36,17 +39,19 @@ export default function CreatePage() {
     }, [landmarkState.markerPosition, landmarkState.markerAltitude])
 
 
+    // Update marker title
     useEffect(() => {
         if (markerRef.current) {
             markerRef.current.label = landmarkState.title || 'Landmark Title'
         }
     }, [landmarkState.title])
 
+    // Initialize Google map
     function initMap() {
         loader.importLibrary('maps3d')
             .then(async ({ Map3DElement, Marker3DElement }) => {
 
-                // create new map
+                // Create reference to Google map
                 mapRef.current = new Map3DElement({
                     center: {
                         lat: currentLandmark.coords.view.latitude,
@@ -58,7 +63,7 @@ export default function CreatePage() {
                     heading: currentLandmark.camera.heading,
                 });
 
-
+                // Setup map event listeners
                 mapRef.current.addEventListener("gmp-centerchange", () => {
                     dispatchLandmark({ type: "SET_LANDMARK_CENTER", payload: mapRef.current.center })
                 });
@@ -80,10 +85,10 @@ export default function CreatePage() {
                     dispatchLandmark({ type: "SET_MARKER_POSITION", payload: { lat, lng } })
                 });
 
-                // add map
+                // Add map to DOM
                 mapElemRef?.current?.append(mapRef.current)
 
-                // create new marker 
+                // Create new marker 
                 markerRef.current = new Marker3DElement({
                     position: { lat: 0, lng: 0, altitude: 0 },
                     altitudeMode: 'RELATIVE_TO_GROUND',
@@ -91,10 +96,9 @@ export default function CreatePage() {
                     label: 'NEW'
                 });
             })
-
-
     }
 
+    // Initialize places API
     function initPlaces() {
 
         loader.importLibrary('places')
@@ -111,6 +115,7 @@ export default function CreatePage() {
                     }
                 );
 
+                // Zoom to location when place changes
                 autocomplete.addListener("place_changed", () => {
                     const place = autocomplete.getPlace();
                     if (!place.geometry || !place.geometry.viewport) {
@@ -122,7 +127,7 @@ export default function CreatePage() {
             })
     }
 
-    // zoom to location
+    // Zoom to location
     async function zoomToViewport(geometry) {
         if (mapRef.current) {
             let elevation = await getElevationforPoint(geometry.location);
@@ -134,8 +139,8 @@ export default function CreatePage() {
         }
     };
 
+      // Get place elevation using the ElevationService.
     async function getElevationforPoint(location) {
-        // Get place elevation using the ElevationService.
         const elevatorService = new google.maps.ElevationService();
         const elevationResponse = await elevatorService.getElevationForLocations({
             locations: [location],
@@ -148,9 +153,9 @@ export default function CreatePage() {
         return elevation;
     }
 
+    // Submit new landmark
     function submit(e) {
         e.preventDefault()
-
         const formData = new FormData()
         formData.append('file', imageFile)
         formData.append('landmarkState', JSON.stringify(landmarkState))
@@ -160,7 +165,6 @@ export default function CreatePage() {
 
     return (
         <>
-
             <div ref={mapElemRef} id="create-map"></div>
 
             <table id="create-table" className="table">

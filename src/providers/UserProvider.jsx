@@ -18,6 +18,7 @@ export default function UserProvider({ children }) {
         fetch('/logout', { method: 'POST' })
             .then(res => res.json())
             .then(({ redirect }) => {
+                // If logged out, clear state and redirect
                 if (redirect) {
                     setIsLoggedIn({})
                     redirect ? window.location.href = '/' : null
