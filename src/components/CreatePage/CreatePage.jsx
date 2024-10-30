@@ -28,7 +28,7 @@ export default function CreatePage() {
             }
 
             // create new marker
-            const { lat, lng } = landmarkState.markerPosition
+            const { lat, lng} = landmarkState.markerPosition
             markerRef.current.label = landmarkState.title || 'Landmark Title'
             markerRef.current.position = { lat, lng, altitude: parseFloat(landmarkState.markerAltitude) || 0.0 }
             mapRef.current.append(markerRef.current)
@@ -76,8 +76,8 @@ export default function CreatePage() {
                 });
 
                 mapRef.current.addEventListener('gmp-click', (event) => {
-                    const { lat, lng, altitude } = event.position
-                    dispatchLandmark({ type: "SET_MARKER_POSITION", payload: { lat, lng, altitude } })
+                    const { lat, lng} = event.position
+                    dispatchLandmark({ type: "SET_MARKER_POSITION", payload: { lat, lng } })
                 });
 
                 // add map

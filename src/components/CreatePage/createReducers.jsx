@@ -18,7 +18,6 @@ export const initialURLState = {
 };
 
 export const landmarkReducer = (state, action) => {
-    console.log(state, action)
     switch (action.type) {
         case "SET_LANDMARK_TITLE":
             return { ...state, title: action.payload };

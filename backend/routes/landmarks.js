@@ -26,12 +26,10 @@ const upload = multer({ storage: storage })
 
 landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
    let landmarks = {
-      'venue': [],
-      'studio': [],
       'artist': [],
-      'label': [],
-      'song': [],
-      'genre':[]
+      'genre':[],
+      'studio': [],
+      'venue': [],
    }
    try {
       getLandmarks().then(data => {
@@ -62,9 +60,9 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
    let { landmarkState, urlState } = req.body
    const { defaultURL, youTubeURL, wikiURL } = JSON.parse(urlState)
    const { title, description, address,
-      category, tilt, range, heading, center, markerPosition } = JSON.parse(landmarkState)
+      category, tilt, range, heading, center, markerPosition,
+       markerAltitude } = JSON.parse(landmarkState)
 
-      // console.log(markerPosition)
 
    const newObj = {
       "title": title,
@@ -85,7 +83,7 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
          "marker": {
             "latitude": markerPosition.lat,
             "longitude": markerPosition.lng,
-            "altitude": markerPosition.altitude
+            "altitude": markerAltitude
          }
       },
       "created": new Date(),
@@ -97,7 +95,6 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
       "image_url": `/images/landmarks/${filename}`,
       "user_id":req.user.id
    }
-   console.log(newObj)
 
    try {
       insertLandmark(newObj)

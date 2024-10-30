@@ -23,7 +23,6 @@ export default function MapPage() {
 
   useEffect(()=>{
     if(mapRef.current){
-      console.log(enableDefaultLabels)
       mapRef.current.defaultLabelsDisabled = enableDefaultLabels
     }
   },[enableDefaultLabels])

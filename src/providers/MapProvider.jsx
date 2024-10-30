@@ -32,11 +32,7 @@ export default function MapProvider({ children }) {
     function getLandmarksByUser() {
         fetch('/getLandmarksByUser')
             .then(res => res.json())
-            .then(data=>{
-                console.log(data)
-                setLandmarksByUser(data)
-            })
-            // .then(setLandmarksByUser)
+            .then(setLandmarksByUser)
     }
 
     function createLandmark(formData) {

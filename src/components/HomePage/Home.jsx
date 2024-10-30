@@ -56,7 +56,6 @@ export default function Home() {
 
                 mapRef?.current?.append(markerRef.current)
                 mapElemRef?.current?.append(mapRef.current)
-                console.log('Initializing map.')
             })
     }
 
