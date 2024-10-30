@@ -182,8 +182,8 @@ export default function CreatePage() {
                         <td> <input className="form-control" ref={searchRef} type="text"></input></td>
                         <td>
                             <input className="form-control"
-                                value={landmarkState.markerAltitude}
-                                onChange={(e) => dispatchLandmark({ type: "SET_MARKER_ALTITUDE", payload: e.target.value })}
+                                value={landmarkState.markerAltitude.toFixed(2)}
+                                onChange={(e) => dispatchLandmark({ type: "SET_MARKER_ALTITUDE", payload: parseFloat(e.target.value) })}
                                 type="number">
                             </input>
                         </td>

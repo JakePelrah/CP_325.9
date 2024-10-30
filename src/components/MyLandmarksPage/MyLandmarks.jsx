@@ -6,7 +6,7 @@ import { FaRegEdit, FaTrash } from "react-icons/fa";
 import './myLandmarks.css'
 
 export default function MyLandmarks() {
-    const { landmarks, removeLandmark, updateLandmark } = useMap()
+    const { landmarksByUser, removeLandmark, updateLandmark } = useMap()
     const [currentLandmark, setCurrentLandmark] = useState(null)
     const editModalRef = useRef(null)
     const deleteModalRef = useRef(null)
@@ -31,7 +31,7 @@ export default function MyLandmarks() {
         deleteModalRef.current.show()
     }
 
-    const renderedLandmarks = landmarks?.map(lm =>
+    const renderedLandmarks = landmarksByUser?.map(lm =>
         <tr>
             <td>{lm.title}</td>
             <td>{lm.category}</td>

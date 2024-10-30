@@ -7,7 +7,7 @@ import './mapNav.css'
 
 
 export default function MapNav() {
-  const {  landmarksByCategory, setCurrentLandmark  } = useMap()
+  const { landmarksByCategory, setCurrentLandmark,  setEnableDefaultLabels } = useMap()
 
   const [categories, _] = useState([
     { name: "artist", icon: BsPersonCircle },
@@ -19,7 +19,7 @@ export default function MapNav() {
   function Category({ name, data, Icon }) {
 
     const renderedItems = data?.map(entry =>
-      <li onClick={() => setCurrentLandmark (entry)} key={uuidv4()}>
+      <li onClick={() => setCurrentLandmark(entry)} key={uuidv4()}>
         <a className="dropdown-item">{entry.title}</a>
       </li>)
 
@@ -42,7 +42,13 @@ export default function MapNav() {
       data={landmarksByCategory[category.name]}
       Icon={category.icon} />)
 
-  return (<div id="map-nav" className="d-flex justify-content-around p-2" >
+  return (<div id="map-nav" className="d-flex justify-content-around p-2 align-items-center" >
+    <div class="form-check">
+      <input onChange={(e)=>setEnableDefaultLabels(!e.target.checked)} class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+        <label class="form-check-label" for="flexCheckDefault">
+          Google Markers
+        </label>
+    </div>
     {renderCategories}
   </div>)
 }

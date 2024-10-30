@@ -1,7 +1,7 @@
-.dropdown-toggle{
+.dropdown-toggle,
+.dropdown-toggle:hover{
   color:var(--main-color-text);
   font-size: 1.2em;
-  font-family: 'Roboto';
 }
 
 #map-nav{

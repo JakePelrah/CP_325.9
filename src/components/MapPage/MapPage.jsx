@@ -5,7 +5,7 @@ import Info from "../Info/Info";
 import './mapPage.css'
 
 export default function MapPage() {
-  const { loader, currentLandmark } = useMap()
+  const { loader, currentLandmark, enableDefaultLabels } = useMap()
   const mapRef = useRef(null)
   const markerRef = useRef(null)
   const mapElemRef = useRef(null)
@@ -21,15 +21,23 @@ export default function MapPage() {
     }
   }, [currentLandmark])
 
+  useEffect(()=>{
+    if(mapRef.current){
+      console.log(enableDefaultLabels)
+      mapRef.current.defaultLabelsDisabled = enableDefaultLabels
+    }
+  },[enableDefaultLabels])
+
   function initMap() {
     loader.importLibrary('maps3d')
       .then(async ({ Map3DElement, Marker3DElement }) => {
 
         mapRef.current = new Map3DElement({
+          defaultLabelsDisabled: true,
           center: {
             lat: currentLandmark.coords.view.latitude,
             lng: currentLandmark.coords.view.longitude,
-            altitude: currentLandmark.coords.view.altitude
+            altitude: currentLandmark.coords.view.altitude,
           },
           tilt: currentLandmark.camera.tilt,
           range: currentLandmark.camera.range,

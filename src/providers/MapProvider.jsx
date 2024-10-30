@@ -14,12 +14,13 @@ export const useMap = () => useContext(MapContext)
 
 export default function MapProvider({ children }) {
     const [landmarksByCategory, setLandmarksByCategory] = useState({})
-    const [landmarks, setLandmarks] = useState([])
+    const [landmarksByUser, setLandmarksByUser] = useState([])
     const [currentLandmark, setCurrentLandmark] = useState(initialLandmark)
+    const [enableDefaultLabels, setEnableDefaultLabels]= useState(null)
 
     useEffect(() => {
         getLandmarksByCategory()
-        getLandmarks()
+        getLandmarksByUser()
     }, [])
 
     function getLandmarksByCategory() {
@@ -28,10 +29,10 @@ export default function MapProvider({ children }) {
             .then(setLandmarksByCategory)
     }
 
-    function getLandmarks() {
-        fetch('/getLandmarks')
+    function getLandmarksByUser() {
+        fetch('/getLandmarksByUser')
             .then(res => res.json())
-            .then(setLandmarks)
+            .then(setLandmarksByUser)
     }
 
     function createLandmark(formData) {
@@ -42,6 +43,7 @@ export default function MapProvider({ children }) {
             .then(({ inserted, message }) => {
                 if (inserted) {
                     getLandmarksByCategory()
+                    getLandmarksByUser()
                     window.location.href = '/map'
                 }
                 else {
@@ -60,14 +62,16 @@ export default function MapProvider({ children }) {
 
     return (
         <MapContext.Provider value={{
-            landmarks,
+            landmarksByUser,
             landmarksByCategory,
             loader,
             setCurrentLandmark,
             currentLandmark,
             removeLandmark,
             updateLandmark,
-            createLandmark
+            createLandmark,
+            enableDefaultLabels,
+            setEnableDefaultLabels
         }}>
             {children}
         </MapContext.Provider>

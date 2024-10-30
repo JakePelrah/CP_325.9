@@ -1,5 +1,5 @@
 import express from "express";
-import { getLandmarks, insertLandmark } from "../db/index.js";
+import { getLandmarksByUser, getLandmarks, insertLandmark } from "../db/index.js";
 import multer from 'multer';
 import path from 'path'
 import { v4 as uuidv4 } from 'uuid'
@@ -46,9 +46,9 @@ landmarkRouter.get('/getLandmarksByCategory', (req, res) => {
    }
 })
 
-landmarkRouter.get('/getLandmarks', (req, res) => {
+landmarkRouter.get('/getLandmarksByUser', (req, res) => {
    try {
-      getLandmarks().then(landmarks => res.json(landmarks))
+      getLandmarksByUser(req.user.id).then(landmarks=>res.json(landmarks))
    }
    catch (e) {
       res.json({})

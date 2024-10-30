@@ -43,3 +43,9 @@ textarea{
 label {
   color: white;
 }
+
+.form-check-input:checked {
+  background-color: var(--main-color);
+  border-color: var(--main-color-text);
+  box-shadow: none;
+}

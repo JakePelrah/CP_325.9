@@ -52,11 +52,18 @@ export async function insertLandmark(newLandmark) {
 }
 
 ////////////////////////////////////// READ //////////////////////////////////////
+export async function getLandmarksByUser(user_id) {
+  const collection = db.collection('landmarks')
+  const results = collection.find({user_id}).toArray()
+  return results
+}
+
 export async function getLandmarks() {
   const collection = db.collection('landmarks')
   const results = collection.find({}).toArray()
   return results
 }
+
 
 
 ////////////////////////////////////// UPDATE //////////////////////////////////////
