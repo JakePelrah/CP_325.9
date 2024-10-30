@@ -96,6 +96,12 @@ landmarkRouter.post('/createLandmark', upload.single('file'), (req, res) => {
       },
       "image_url":`/images/landmarks/${filename}`
    }
-   console.log(newObj)
-   insertLandmark(newObj)
+
+   try{
+      insertLandmark(newObj)
+      res.json({inserted:true})
+   }
+   catch(e){
+      res.json({inserted:false, message:e})
+   }
 })

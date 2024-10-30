@@ -1,10 +1,12 @@
 import { useEffect, useState, useReducer, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import { useMap } from "../../providers/MapProvider"
 import { urlReducer, initialURLState, landmarkReducer, initialLandmarkState } from "./createReducers"
 import "./createPage.css"
 
 export default function CreatePage() {
-    const { loader, currentLandmark } = useMap()
+    const { loader, currentLandmark, getLandmarks } = useMap()
+    const navigate = useNavigate()
     const searchRef = useRef(null)
     const mapRef = useRef(null)
     const mapElemRef = useRef(null)
@@ -159,6 +161,15 @@ export default function CreatePage() {
         fetch('/createLandmark', {
             method: 'POST',
             body: formData
+        }).then(res=>res.json())
+        .then(({inserted, message})=>{
+            if(inserted){
+                getLandmarks()
+                navigate("/map")
+            }
+            else{
+                alert("Insertion error", message)
+            }
         })
     }
 

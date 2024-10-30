@@ -1,0 +1,35 @@
+{
+    "_id": {
+      "$oid": "6721a008cb330404c0e81f6d"
+    },
+    "title": "Wembley Stadium",
+    "description": "Wembley Stadium, often referred to as the \"Home of Football,\" is also a renowned venue for music, hosting legendary concerts and events that have shaped the landscape of live performances. Opened in 2007, the stadium has a seating capacity of 90,000 and features state-of-the-art acoustics, making it an ideal location for artists to showcase their talents. Iconic acts like Queen, Elton John, and Adele have graced its stage, turning memorable performances into part of music history. With its distinctive arch and electric atmosphere, Wembley Stadium remains a pilgrimage site for music lovers, celebrating the rich cultural tapestry of live entertainment in the heart of London.",
+    "address": "Wembley HA9 0WS, United Kingdom",
+    "category": "venue",
+    "camera": {
+      "tilt": 64.99574947277843,
+      "range": 478.459680037995,
+      "heading": 5.7521039131931825e-9
+    },
+    "coords": {
+      "view": {
+        "latitude": 51.5549687808015,
+        "longitude": -0.27962489839387983,
+        "altitude": 98.86171154353644
+      },
+      "marker": {
+        "latitude": 51.55489389529492,
+        "longitude": -0.27891636446213397,
+        "altitude": 93.23621900356805
+      }
+    },
+    "created": {
+      "$date": "2024-10-30T02:55:04.133Z"
+    },
+    "websites": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Wembley_Stadium",
+      "default": "https://www.wembleystadium.com/",
+      "youtube": "https://www.youtube.com/@WembleyStadiumConnectedbyEE"
+    },
+    "image_url": "/images/landmarks/London_Wembley-56554ca6-c95c-4aba-8c1b-4b3779cdca65.jpg"
+  }

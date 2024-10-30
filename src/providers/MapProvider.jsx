@@ -51,7 +51,8 @@ export default function MapProvider({ children }) {
             setCurrentLandmark,
             currentLandmark,
             removeLandmark,
-            updateLandmark
+            updateLandmark,
+            getLandmarks
         }}>
             {children}
         </MapContext.Provider>
