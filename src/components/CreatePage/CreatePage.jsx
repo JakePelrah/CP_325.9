@@ -166,7 +166,6 @@ export default function CreatePage() {
             <table id="create-table" className="table">
                 <thead>
                     <tr>
-                        {/* <th scope="col">Search</th> */}
                         <th scope="col">Marker Altitude</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Longitude</th>
@@ -178,7 +177,6 @@ export default function CreatePage() {
                 </thead>
                 <tbody>
                     <tr>
-                        {/* <td> <input className="form-control" ref={searchRef} type="text"></input></td> */}
                         <td>
                             <input className="form-control"
                                 value={landmarkState.markerAltitude.toFixed(2)}
