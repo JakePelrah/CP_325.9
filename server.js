@@ -20,6 +20,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const port = 3000;
 const app = express();
 
+// Serve static files from the 'backend/images/landmarks' directory
+app.use('/images/landmarks', express.static(path.join(__dirname, 'backend/images/landmarks')));
+
 // Middleware setup
 app.use(express.static(path.join(__dirname, 'dist'))); 
 app.use(express.json()); // Parse JSON bodies
