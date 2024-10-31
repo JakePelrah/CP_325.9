@@ -5,6 +5,8 @@
 
 **Hosting**: The [application](https://psfinal-5d163b773e42.herokuapp.com/) is being hosted on Heroku
 
+**Github**: [CP_325.9](https://github.com/JakePelrah/CP_325.9)
+
 Express Server: [server.js](../server.js)
 
 Oauth using Passport: [auth.js](./routes/auth.js) 
