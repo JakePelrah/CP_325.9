@@ -1,6 +1,6 @@
 # Music Landmarks
 This project displays music related landmarks using a 3D Map.
-Users can explore musica landmarks from around the globe. Logging in with a Gmail account allowd users to create, modify, and delete landmarks.
+Users can explore music landmarks from around the globe. Logging in with a Gmail account allowd users to create, modify, and delete landmarks.
 
 ## Hosting 
 The [application](https://psfinal-5d163b773e42.herokuapp.com/) is being hosted on Heroku. 
@@ -20,12 +20,19 @@ The [application](https://psfinal-5d163b773e42.herokuapp.com/) is being hosted o
 
 The backend is using an Express server. Authentication and authorization are handled using the Google Oauth strategy for PassportJS. CRUD operations are handled using MongoDB. Image uploads are processed using Multer.
 
-- [Express Server](../server.js)
-- [Passport OAuth](./routes/auth.js) 
-- [MongoDB](./db/index.js)
-- [CRUD Routes](./routes/landmarks.js)
-- [Uploads](./images/landmarks)
+- [Express Server](./server.js)
+- [Passport OAuth](./backend/routes/auth.js) 
+- [MongoDB](./backend/db/index.js)
+- [CRUD Routes](./backend/routes/landmarks.js)
+- [Uploads](./backend/images/landmarks/)
 
+
+## TODO
+-[ ] Remove old sessions
+
+-[ ] Improve redirects
+
+-[ ] Improve UI and responsiveness
 
 ## Requirements
 - [X] Project is organized into appropriate files and directories, following best practices. 
